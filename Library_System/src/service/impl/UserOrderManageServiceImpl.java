@@ -24,4 +24,9 @@ public class UserOrderManageServiceImpl implements UserOrderManageService {
     public void payFineAndChangeTableOrderuser(String id, int fineDay) {
 
     }
+
+    @Override
+    public void lendBook(String userId, String bookId) {
+
+    }
 }

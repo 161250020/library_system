@@ -22,4 +22,14 @@ public class UserManageServiceImpl implements UserManageService {
     public void changePass(String id, String laterPass) {
 
     }
+
+    @Override
+    public void login(String id, String password) {
+
+    }
+
+    @Override
+    public void register(User newUser) {
+
+    }
 }
