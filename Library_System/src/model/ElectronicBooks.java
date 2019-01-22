@@ -2,7 +2,7 @@ package model;
 /**
  * author：丁雯雯
  * time：2019/01/22
- * 书籍的基本信息
+ * 电子书籍的基本信息
  */
 public class ElectronicBooks {
     public String id;//pk

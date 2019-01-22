@@ -4,7 +4,7 @@ import java.sql.Date;
 /**
  * author：丁雯雯
  * time：2019/01/22
- * 用户订单的基本信息
+ * 用户借书订单的基本信息
  */
 public class UserOrder {
     public String id;//用户借阅订单的id---pk
@@ -12,7 +12,6 @@ public class UserOrder {
     public String bookId;//借阅图书的id
     public Date borrowTime;//开始借阅的时间
     public Date returnTime;//还书的时间
-    public int fineMoneyPerDay;//逾期罚款每天的钱数---以免不同人罚款的每天的金额不同
     public int fineDay;//逾期的天数
     public int alreadyPay;//逾期罚款的钱是否已交；已交：1；未交：0；
 
@@ -54,14 +53,6 @@ public class UserOrder {
 
     public void setReturnTime(Date returnTime) {
         this.returnTime = returnTime;
-    }
-
-    public int getFineMoneyPerDay() {
-        return fineMoneyPerDay;
-    }
-
-    public void setFineMoneyPerDay(int fineMoneyPerDay) {
-        this.fineMoneyPerDay = fineMoneyPerDay;
     }
 
     public int getFineDay() {

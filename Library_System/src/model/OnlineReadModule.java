@@ -2,11 +2,11 @@ package model;
 /**
  * author：丁雯雯
  * time：2019/01/22
- * 书籍的基本信息
+ * 在线阅读组件的基本信息
  */
 public class OnlineReadModule {
     public String id;//pk
-    public String documentFormat;//文档格式
+    public String documentFormat;//文档格式（eg: word, pdf, epub,...）
     public String documentReader;//文档阅读器
 
     public String getId() {
