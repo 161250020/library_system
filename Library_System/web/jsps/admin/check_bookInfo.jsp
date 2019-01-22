@@ -86,7 +86,7 @@
                 <br>
                 <div class="panel panel-default">
                     <table class="table" id="project">
-                        <tr><th>书籍ID</th><th>名称</th><th>类型</th><th>作者</th><th>出版社</th><th>简介</th><th>状态</th><th>操作</th></tr>
+                        <tr><th>书籍ID</th><th>名称</th><th>类型</th><th>作者</th><th>出版社</th><th>状态</th><th>操作</th></tr>
                     </table>
                 </div>
                 <button>添加书籍入库</button>
