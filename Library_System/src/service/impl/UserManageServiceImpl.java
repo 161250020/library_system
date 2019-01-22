@@ -8,6 +8,13 @@ import service.UserManageService;
  * 管理用户的方法
  */
 public class UserManageServiceImpl implements UserManageService {
+
+    public static UserManageService userManageService=new UserManageServiceImpl();
+
+    public static UserManageService getInstance(){
+        return userManageService;
+    }
+
     @Override
     public User getUserInfoById(String id) {
         return null;
@@ -24,12 +31,12 @@ public class UserManageServiceImpl implements UserManageService {
     }
 
     @Override
-    public void login(String id, String password) {
+    public void login(String name, String password) {
 
     }
 
-    @Override
-    public void register(User newUser) {
-
-    }
+//    @Override
+//    public void register(User newUser) {
+//
+//    }
 }

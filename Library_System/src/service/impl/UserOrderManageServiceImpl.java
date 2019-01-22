@@ -10,6 +10,13 @@ import java.util.List;
  * 管理用户借书记录的方法
  */
 public class UserOrderManageServiceImpl implements UserOrderManageService {
+
+    public static UserOrderManageService userOrderManageService=new UserOrderManageServiceImpl();
+
+    public static UserOrderManageService getInstance(){
+        return userOrderManageService;
+    }
+
     @Override
     public List getInLentBooksById(String id) {
         return null;
@@ -20,13 +27,13 @@ public class UserOrderManageServiceImpl implements UserOrderManageService {
         return null;
     }
 
-    @Override
-    public void payFineAndChangeTableOrderuser(String id, int fineDay) {
-
-    }
-
-    @Override
-    public void lendBook(String userId, String bookId) {
-
-    }
+//    @Override
+//    public void payFineAndChangeTableOrderuser(String id, int fineDay) {
+//
+//    }
+//
+//    @Override
+//    public void lendBook(String userId, String bookId) {
+//
+//    }
 }

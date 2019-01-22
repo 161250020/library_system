@@ -12,4 +12,10 @@ public interface AdminManageService {
      * change tables：user
      * */
     public void changeUserInfo(String id, User newUser);
+
+    /**
+     * function：登录（管理员ID， 密码）
+     * from tables：admin
+     * */
+    public void login(String name, String password);
 }

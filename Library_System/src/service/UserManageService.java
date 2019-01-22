@@ -27,14 +27,14 @@ public interface UserManageService {
     public void changePass(String id, String laterPass);
 
     /**
-     * function：登录（用户ID， 密码）
+     * function：登录（用户name， 密码）
      * from tables：user
      * */
-    public void login(String id, String password);
+    public void login(String name, String password);
 
     /**
      * function：注册，注意一下原来的数据库当中是否有这个用户（name要唯一）
      * from tables：user
      * */
-    public void register(User newUser);
+    //public void register(User newUser);
 }

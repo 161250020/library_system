@@ -11,6 +11,11 @@ import java.util.List;
  */
 public class BookManageServiceImpl implements BookManageService {
 
+    public static BookManageService bookManageService=new BookManageServiceImpl();
+
+    public static BookManageService getInstance(){
+        return bookManageService;
+    }
     @Override
     public Book getBookInfoById(String id) {
         return null;
@@ -21,8 +26,8 @@ public class BookManageServiceImpl implements BookManageService {
 
     }
 
-    @Override
-    public void lendBook(String userId, String bookId) {
-
-    }
+//    @Override
+//    public void lendBook(String userId, String bookId) {
+//
+//    }
 }
