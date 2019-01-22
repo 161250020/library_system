@@ -1,16 +1,14 @@
 package model;
-/**
- * author：丁雯雯
- * time：2019/01/22
- * 书籍的基本信息
- */
-public class book {
+
+public class electronicBooks {
     public String id;//pk
     public String type;//图书类别（eg:文学类）
     public String name;//图书名称---以免后续需要检索
     public String author;//图书作者信息---以免后续需要检索
     public String publishCompany;//出版社---以免后续需要检索
-    public String state;//借阅状态；in：未借出；out：已借出；
+    public String documentFormat;//文档格式
+    public String content;//书籍内容存储---这里默认是varchar(100)大小，
+    // 其实书籍内容可以更大，然后数据库中存储书籍内容存放的URL，然后内容存储到另外的地方，但这里就简单表示吧？
 
     public String getId() {
         return id;
@@ -52,12 +50,19 @@ public class book {
         this.publishCompany = publishCompany;
     }
 
-    public String getState() {
-        return state;
+    public String getDocumentFormat() {
+        return documentFormat;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setDocumentFormat(String documentFormat) {
+        this.documentFormat = documentFormat;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }
