@@ -4,6 +4,7 @@ import service.*;
 import service.impl.*;
 
 public class ServiceFactory {
+
     public static AdminManageService getAdminManageService(){
         return AdminManageServiceImpl.getInstance();
     }
