@@ -4,7 +4,7 @@ package model;
  * time：2019/01/22
  * 在线阅读组件的基本信息
  */
-public class read {
+public class Read {
     public String id;//pk
     public String documentFormat;//文档格式（eg: word, pdf, epub,...）
     public String documentReader;//文档阅读器

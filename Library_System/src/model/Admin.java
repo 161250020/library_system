@@ -4,7 +4,7 @@ package model;
  * time：2019/01/22
  * 管理员的基本信息
  */
-public class admin {
+public class Admin {
     public String id;//pk
     public String name;//名称
     public String password;//密码

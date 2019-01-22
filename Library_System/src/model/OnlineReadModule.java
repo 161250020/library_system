@@ -4,7 +4,7 @@ package model;
  * time：2019/01/22
  * 书籍的基本信息
  */
-public class onlineReadModule {
+public class OnlineReadModule {
     public String id;//pk
     public String documentFormat;//文档格式
     public String documentReader;//文档阅读器

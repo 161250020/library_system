@@ -92,15 +92,6 @@
                 <div class="panel panel-default" align="left">
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新用户名：</h5>
-                        </div>
-                        <div class="two">
-                            <input class="form-control" id="new_username">
-                        </div>
-                    </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
                             <h5 style="font-family: 仿宋;font-weight: bold">原密码：</h5>
                         </div>
                         <div class="two">
