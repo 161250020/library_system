@@ -11,6 +11,15 @@ public class Book {
     public String author;//图书作者信息---以免后续需要检索
     public String publishCompany;//出版社---以免后续需要检索
     public String state;//借阅状态；in：未借出；out：已借出；
+    public double fineMoneyPerDay;//逾期罚款每天的钱数---以免不同人罚款的每天的金额不同
+
+    public double getFineMoneyPerDay() {
+        return fineMoneyPerDay;
+    }
+
+    public void setFineMoneyPerDay(double fineMoneyPerDay) {
+        this.fineMoneyPerDay = fineMoneyPerDay;
+    }
 
     public String getId() {
         return id;
