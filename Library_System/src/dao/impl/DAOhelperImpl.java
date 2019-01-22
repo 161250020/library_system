@@ -16,7 +16,7 @@ public class DAOhelperImpl implements DAOhelper {
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/j2ee";
         String username = "root";
-        String password = "";
+        String password = "161250049";
         try {
             Class.forName(driver); //classLoader,加载对应驱动
             conn = (Connection) DriverManager.getConnection(url, username, password);
