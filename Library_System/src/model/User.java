@@ -11,6 +11,7 @@ public class User {
     public String type;//本科生（undergraduate），研究生（postgraduate），教师（teacher）
     public int MaxNum;//借书的最大本数
     public int MaxPeriod;//结束的最大时长
+    public int money;//用户的总金额数
 
     public String getId() {
         return id;
@@ -58,5 +59,13 @@ public class User {
 
     public void setMaxPeriod(int maxPeriod) {
         MaxPeriod = maxPeriod;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

@@ -5,7 +5,7 @@
     <output-test url="file://$MODULE_DIR$/Library_System/web/WEB-INF/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="9.0" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library>
