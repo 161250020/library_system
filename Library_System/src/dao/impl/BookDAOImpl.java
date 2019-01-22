@@ -21,6 +21,7 @@ public class BookDAOImpl implements BookDAO {
         book.setAuthor(rs.getString("author"));
         book.setPublishCompany(rs.getString("publishCompany"));
         book.setState(rs.getString("state"));
+        book.setFineMoneyPerDay(rs.getDouble("fineMoneyPerDay"));
         return book;
     }
 
@@ -49,17 +50,61 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public String addBook(Book book) {
+        Connection conn = helper.getConnection();
+        PreparedStatement stat = null;
+
+        try{
+            String sql = "INSERT INTO book(id,name,publishCompany,type,author,state,fineMoneyPerDay)VALUES (?,?,?,?,?,?,?)";
+            stat = conn.prepareStatement(sql);
+            stat.setString(1,book.getId());
+            stat.setString(2,book.getName());
+            stat.setString(3,book.getPublishCompany());
+            stat.setString(4,book.getType());
+            stat.setString(5,book.getAuthor());
+            stat.setString(6,book.getState());
+            stat.setDouble(7,book.getFineMoneyPerDay());
+            stat.executeUpdate();
+            return "成功新增新书籍"+book.getId();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            helper.closeConnection(conn);
+            helper.closePreparedStatement(stat);
+
+        }
         return "新增书籍失败";
     }
 
     @Override
     public String deleteBook(Book book) {
+        Connection conn = helper.getConnection();
+        PreparedStatement stat = null;
+
+        try{
+            String sql = "DELETE FROM book WHERE id = ?";
+            stat = conn.prepareStatement(sql);
+            stat.setString(1,book.getId());
+            stat.executeUpdate();
+            return "成功删除书籍"+book.getId();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            helper.closeConnection(conn);
+            helper.closePreparedStatement(stat);
+
+        }
         return "删除书籍失败";
     }
 
     @Override
     public String updateBook(Book book) {
-
+        try{
+            deleteBook(book);
+            addBook(book);
+            return "更新书籍信息成功";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "更新书籍失败";
     }
 
@@ -74,13 +119,7 @@ public class BookDAOImpl implements BookDAO {
             stat = conn.prepareStatement(sql);
             rs = stat.executeQuery();
             while (rs.next()){
-                Book book = new Book();
-                book.setId(rs.getString("id"));
-                book.setName(rs.getString("name"));
-                book.setType(rs.getString("type"));
-                book.setAuthor(rs.getString("author"));
-                book.setPublishCompany(rs.getString("publishCompany"));
-                book.setState(rs.getString("state"));
+                Book book = getFromSingleRs(rs);
 
                 books.add(book);
             }

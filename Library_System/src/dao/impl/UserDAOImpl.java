@@ -122,14 +122,8 @@ public class UserDAOImpl implements UserDAO {
             stat = conn.prepareStatement(sql);
             rs = stat.executeQuery();
             while (rs.next()){
-                User user = new User();
-                user.setId(rs.getString("id"));
-                user.setName(rs.getString("name"));
-                user.setType(rs.getString("type"));
-                user.setMaxNum(rs.getInt("MaxNum"));
-                user.setMaxPeriod(rs.getInt("MaxPeriod"));
-                user.setMoney(rs.getDouble("money"));
-                user.setPassword(rs.getString("password"));
+                User user = getFromSingleRs(rs);
+
                 users.add(user);
             }
         } catch (SQLException e) {
