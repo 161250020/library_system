@@ -29,9 +29,6 @@
         <button id="submit" type="submit">登 陆</button>
     </form>
 
-    <a href="Register.jsp">
-        <button type="button" class="register-tis">还有没有账号？</button>
-    </a>
 
 </div>
 </body>
