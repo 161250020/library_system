@@ -76,7 +76,7 @@
                 <tr><th>用户ID</th><th>用户名</th><th>密码</th><th>操作</th></tr>
             </table>
         </div>
-        <button>添加书籍入库</button>
+
     </div>
 </div>
 </div>
