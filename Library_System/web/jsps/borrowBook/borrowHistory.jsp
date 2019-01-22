@@ -2,14 +2,14 @@
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
-  Time: 15:52
+  Time: 14:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改信息</title>
+    <title>借阅历史</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -89,46 +89,21 @@
             <div class="col-md-9" style="background-color: white;box-shadow: inset 1px -1px 1px #f7ff62, inset -1px 1px 1px #fff626;height: 70%;">
                 <br>
                 <br>
-                <div class="panel panel-default" align="left">
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新用户名：</h5>
-                        </div>
-                        <div class="two">
-                            <input class="form-control" id="new_username">
-                        </div>
+                <div>
+                    <div class="panel panel-default">
+                        <table class="table" id="project">
+                            <th>订单ID</th><th>书籍ID</th><th>书名</th><th>借出日期</th><th>归还日期</th><th>逾期天数</th><th>逾期罚款（元/天）</th><th>应罚金额</th><th>罚款状态</th>
+                        </table>
                     </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">原密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="pre_pass">
-                        </div>
+                </div>
+                <hr>
+                <div>
+                    <div class="one">
+                        <b>剩余未缴罚款总金额：</b>
+                        <b id="sum_fine_money">xxxxxx</b>
                     </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="new_pass">
-                        </div>
-                    </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">确认新密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="reInputNew_pass">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div align="center">
-                        <button type="button" class="button warning tiny" style="width: 50%" onclick="modify_pass()">确认</button>
+                    <div class="two">
+                        <button type="button" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>
                     </div>
                 </div>
             </div>

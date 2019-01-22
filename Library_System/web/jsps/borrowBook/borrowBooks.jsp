@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改信息</title>
+    <title>在借书籍</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -89,47 +89,10 @@
             <div class="col-md-9" style="background-color: white;box-shadow: inset 1px -1px 1px #f7ff62, inset -1px 1px 1px #fff626;height: 70%;">
                 <br>
                 <br>
-                <div class="panel panel-default" align="left">
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新用户名：</h5>
-                        </div>
-                        <div class="two">
-                            <input class="form-control" id="new_username">
-                        </div>
-                    </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">原密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="pre_pass">
-                        </div>
-                    </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="new_pass">
-                        </div>
-                    </div>
-                    <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">确认新密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="reInputNew_pass">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div align="center">
-                        <button type="button" class="button warning tiny" style="width: 50%" onclick="modify_pass()">确认</button>
-                    </div>
+                <div class="panel panel-default">
+                    <table class="table" id="project">
+                        <th>书籍ID</th><th>书籍分类</th><th>书名</th><th>作者</th><th>出版设</th><th>借出日期</th><th>剩余天数</th>
+                    </table>
                 </div>
             </div>
         </div>

@@ -2,14 +2,14 @@
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
-  Time: 15:52
+  Time: 14:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改信息</title>
+    <title>选择在线阅读书目</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -90,46 +90,34 @@
                 <br>
                 <br>
                 <div class="panel panel-default" align="left">
+                    <b>搜索在线书籍：</b>
+                    <hr>
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新用户名：</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold">书籍名：</h5>
                         </div>
                         <div class="two">
-                            <input class="form-control" id="new_username">
+                            <input class="form-control" id="book_name">
                         </div>
                     </div>
                     <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">原密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="pre_pass">
-                        </div>
-                    </div>
+                    <b>or</b>
+                    <br>
                     <br>
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新密码：</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold">电子书ID：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="new_pass">
+                            <input class="form-control" id="book_id">
                         </div>
                     </div>
                     <br>
-                    <div style="height: 40px">
-                        <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">确认新密码：</h5>
-                        </div>
-                        <div class="two">
-                            <input type="password" class="form-control" id="reInputNew_pass">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div align="center">
-                        <button type="button" class="button warning tiny" style="width: 50%" onclick="modify_pass()">确认</button>
-                    </div>
+                    <hr>
+                    <b>搜索结果：</b>
+                    <table class="table" id="project">
+                        <th>书籍ID</th><th>书籍分类</th><th>书名</th><th>作者</th><th>出版设</th><th>文档格式</th>
+                    </table>
                 </div>
             </div>
         </div>

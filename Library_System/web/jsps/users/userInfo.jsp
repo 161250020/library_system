@@ -2,14 +2,14 @@
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
-  Time: 15:52
+  Time: 14:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改信息</title>
+    <title>个人信息</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -92,43 +92,74 @@
                 <div class="panel panel-default" align="left">
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新用户名：</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold">用户ID：</h5>
                         </div>
                         <div class="two">
-                            <input class="form-control" id="new_username">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
                         </div>
                     </div>
                     <br>
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">原密码：</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold">用户名：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="pre_pass">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
                         </div>
                     </div>
                     <br>
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">新密码：</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold">身份：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="new_pass">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
                         </div>
                     </div>
                     <br>
                     <div style="height: 40px">
                         <div class="one">
-                            <h5 style="font-family: 仿宋;font-weight: bold">确认新密码：</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold">可借最大图书量：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="reInputNew_pass">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
                         </div>
                     </div>
                     <br>
+                    <div style="height: 40px">
+                        <div class="one">
+                            <h5 style="font-family: 仿宋;font-weight: bold">已借图书量：</h5>
+                        </div>
+                        <div class="two">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                        </div>
+                    </div>
                     <br>
-                    <div align="center">
-                        <button type="button" class="button warning tiny" style="width: 50%" onclick="modify_pass()">确认</button>
+                    <div style="height: 40px">
+                        <div class="one">
+                            <h5 style="font-family: 仿宋;font-weight: bold">已借图书名：</h5>
+                        </div>
+                        <div class="two">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="height: 40px">
+                        <div class="one">
+                            <h5 style="font-family: 仿宋;font-weight: bold">可借阅图书最大时长：</h5>
+                        </div>
+                        <div class="two">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="height: 40px">
+                        <div class="one">
+                            <h5 style="font-family: 仿宋;font-weight: bold">账户内金额：</h5>
+                        </div>
+                        <div class="two">
+                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                        </div>
                     </div>
                 </div>
             </div>
