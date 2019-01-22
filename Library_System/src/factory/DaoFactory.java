@@ -1,11 +1,7 @@
 package factory;
 
-import dao.AdminDAO;
-import dao.BookDAO;
-import dao.UserDAO;
-import dao.impl.AdminDAOImpl;
-import dao.impl.BookDAOImpl;
-import dao.impl.UserDAOImpl;
+import dao.*;
+import dao.impl.*;
 import model.Book;
 
 public class DaoFactory {
@@ -19,9 +15,11 @@ public class DaoFactory {
         return new UserDAOImpl();
     }
 
-    public BookDAO getBookDAO(){ return new BookDAOImpl();}
+    public BookDAO getBookDAO(){ return new BookDAOImpl(); }
 
-    public AdminDAO getAdminDAO(){ return  new AdminDAOImpl();    }
+    public AdminDAO getAdminDAO(){ return  new AdminDAOImpl(); }
 
+    public ElectronicBooksDAO getElectronicBooksDAO(){return  new ElectronicBooksDAOImpl();}
 
+    public EditUserInfoOrderDAO getEditUserInfoOrderDAO(){return new EditUserInfoOrderDAOImpl();}
 }
