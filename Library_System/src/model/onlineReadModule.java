@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * author：丁雯雯
+ * time：2019/01/22
+ * 书籍的基本信息
+ */
 public class onlineReadModule {
     public String id;//pk
     public String documentFormat;//文档格式
