@@ -11,8 +11,23 @@ import java.util.List;
  */
 public class BookManageServiceImpl implements BookManageService {
 
+    public static BookManageService bookManageService=new BookManageServiceImpl();
+
+    public static BookManageService getInstance(){
+        return bookManageService;
+    }
     @Override
     public Book getBookInfoById(String id) {
         return null;
     }
+
+    @Override
+    public void addBookInfo(Book newBook) {
+
+    }
+
+//    @Override
+//    public void lendBook(String userId, String bookId) {
+//
+//    }
 }

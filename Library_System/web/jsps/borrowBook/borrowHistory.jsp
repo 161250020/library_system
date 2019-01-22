@@ -103,7 +103,7 @@
                         <b id="sum_fine_money">xxxxxx</b>
                     </div>
                     <div class="two">
-                        <button type="button" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>
+                        <%--<button type="button" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>--%>
                     </div>
                 </div>
             </div>
