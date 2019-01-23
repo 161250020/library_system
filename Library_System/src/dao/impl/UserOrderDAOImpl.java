@@ -126,4 +126,37 @@ public class UserOrderDAOImpl implements UserOrderDAO {
         }
         return userOrder;
     }
+
+    @Override
+    public String updateUserOrder(UserOrder u) {
+        try{
+            deleteUserOrder(u);
+            addUserOrder(u);
+            return "更新借阅记录成功";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "更新借阅记录失败";
+    }
+
+    @Override
+    public String deleteUserOrder(UserOrder u) {
+        Connection conn = helper.getConnection();
+        PreparedStatement stat = null;
+
+        try{
+            String sql = "DELETE FROM userorder WHERE id = ?";
+            stat = conn.prepareStatement(sql);
+            stat.setString(1,u.getId());
+            stat.executeUpdate();
+            return "成功删除借阅记录"+u.getId();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            helper.closeConnection(conn);
+            helper.closePreparedStatement(stat);
+
+        }
+        return "删除借阅记录失败";
+    }
 }
