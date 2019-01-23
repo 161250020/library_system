@@ -22,4 +22,8 @@ public class DaoFactory {
     public ElectronicBooksDAO getElectronicBooksDAO(){return  new ElectronicBooksDAOImpl();}
 
     public EditUserInfoOrderDAO getEditUserInfoOrderDAO(){return new EditUserInfoOrderDAOImpl();}
+
+    public UserOrderDAO getUserOrderDAO(){return new UserOrderDAOImpl();}
+
+    public OnlineReadModuleDAO getOnlineReadModuleDAO(){return  new OnlineReadModuleDAOImpl();}
 }

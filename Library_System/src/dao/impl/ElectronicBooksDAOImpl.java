@@ -21,7 +21,7 @@ public class ElectronicBooksDAOImpl implements ElectronicBooksDAO {
         e.setAuthor(rs.getString("author"));
         e.setPublishCompany(rs.getString("publishCompany"));
         e.setDocumentFormat(rs.getString("documentFormat"));
-        e.setContent(rs.getString("content"));
+        e.setFilepath(rs.getString("filepath"));
         return e;
     }
     @Override
@@ -67,7 +67,7 @@ public class ElectronicBooksDAOImpl implements ElectronicBooksDAO {
         PreparedStatement stat = null;
 
         try{
-            String sql = "INSERT INTO electronicbooks(id,name,publishCompany,type,author,documentFormat,content)VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO electronicbooks(id,name,publishCompany,type,author,documentFormat,filepath)VALUES (?,?,?,?,?,?,?)";
             stat = conn.prepareStatement(sql);
             stat.setString(1,e.getId());
             stat.setString(2,e.getName());
@@ -75,7 +75,7 @@ public class ElectronicBooksDAOImpl implements ElectronicBooksDAO {
             stat.setString(4,e.getType());
             stat.setString(5,e.getAuthor());
             stat.setString(6,e.getDocumentFormat());
-            stat.setString(7,e.getContent());
+            stat.setString(7,e.getFilepath());
             stat.executeUpdate();
             return "成功新增电子书"+e.getId();
         } catch (SQLException ex) {
