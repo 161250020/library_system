@@ -12,8 +12,9 @@
   </head>
   <body>
   <a href="jsps/users/Login.jsp">登录</a>
-  <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/test")%>">
+  <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/Login")%>">
     <input type="submit" value="input" name="Submit">
+    <input type="submit" value="input2" name="Submit">
   </form>
 
   <script language="javascript">

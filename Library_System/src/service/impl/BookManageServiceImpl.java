@@ -28,6 +28,12 @@ public class BookManageServiceImpl implements BookManageService {
         DaoFactory.getInstance().getBookDAO().addBook(newBook);
     }
 
+    @Override
+    public List getAllBooksInfo() {
+        List ret=DaoFactory.getInstance().getBookDAO().findAllBook();
+        return ret;
+    }
+
 //    @Override
 //    public void lendBook(String userId, String bookId) {
 //

@@ -28,4 +28,10 @@ public interface BookManageService {
      * change table: book（修改书籍的state），userorder（添加借书的订单）
      * */
     //public void lendBook(String userId, String bookId);
+
+    /**
+     * function：获取所有书的信息
+     * from tables：book
+     * */
+    public List getAllBooksInfo();
 }

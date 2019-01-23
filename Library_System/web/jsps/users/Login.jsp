@@ -5,6 +5,7 @@
   Time: 15:52
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,7 +29,6 @@
         </div>
         <button id="submit" type="submit">登 陆</button>
     </form>
-
 
 </div>
 </body>

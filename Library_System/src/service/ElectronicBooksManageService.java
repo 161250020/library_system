@@ -1,6 +1,7 @@
 package service;
 
 import model.ElectronicBooks;
+import model.OnlineReadModule;
 
 import java.util.List;
 
@@ -22,5 +23,7 @@ public interface ElectronicBooksManageService {
      * 返回的结果：可能为多本电子书
      * */
     public List getElectronicBooksInfoByName(String name);
+
+
 
 }

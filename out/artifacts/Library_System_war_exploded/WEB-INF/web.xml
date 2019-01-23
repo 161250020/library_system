@@ -13,12 +13,101 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>servlet.test</servlet-class>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>servlet.users.Login</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userInfo</servlet-name>
+        <servlet-class>servlet.users.userInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userInfo</servlet-name>
+        <url-pattern>/userInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>onlineInReadingBook</servlet-name>
+        <servlet-class>servlet.readBook.onlineInReadingBook</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>onlineInReadingBook</servlet-name>
+        <url-pattern>/onlineInReadingBook</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>onlineReadBook</servlet-name>
+        <servlet-class>servlet.readBook.onlineReadBook</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>onlineReadBook</servlet-name>
+        <url-pattern>/onlineReadBook</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>editUserInfo</servlet-name>
+        <servlet-class>servlet.editInfo.editUserInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editUserInfo</servlet-name>
+        <url-pattern>/editUserInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>borrowBooks</servlet-name>
+        <servlet-class>servlet.borrowBook.borrowBooks</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>borrowBooks</servlet-name>
+        <url-pattern>/borrowBooks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>borrowHistory</servlet-name>
+        <servlet-class>servlet.borrowBook.borrowHistory</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>borrowHistory</servlet-name>
+        <url-pattern>/borrowHistory</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>check_bollowing</servlet-name>
+        <servlet-class>servlet.admin.check_bollowing</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>check_bollowing</servlet-name>
+        <url-pattern>/check_bollowing</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>check_bookInfo</servlet-name>
+        <servlet-class>servlet.admin.check_bookInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>check_bookInfo</servlet-name>
+        <url-pattern>/check_bookInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>check_user_changed</servlet-name>
+        <servlet-class>servlet.admin.check_user_changed</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>check_user_changed</servlet-name>
+        <url-pattern>/check_user_changed</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>check_user_data</servlet-name>
+        <servlet-class>servlet.admin.check_user_data</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>check_user_data</servlet-name>
+        <url-pattern>/check_user_data</url-pattern>
     </servlet-mapping>
 </web-app>

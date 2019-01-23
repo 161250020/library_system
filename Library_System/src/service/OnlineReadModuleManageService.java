@@ -1,5 +1,6 @@
 package service;
 
+import model.ElectronicBooks;
 import model.OnlineReadModule;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface OnlineReadModuleManageService {
      * 按理说文档格式对应的文档阅读器不止一个，应该返回List（OnlineReadModule），但是这里简单写
      * */
     public OnlineReadModule getOnlineReadModuleByDocumentFormat(String documentFormat);
+
 }

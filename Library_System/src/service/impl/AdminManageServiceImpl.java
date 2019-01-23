@@ -4,6 +4,9 @@ import factory.DaoFactory;
 import model.Admin;
 import model.User;
 import service.AdminManageService;
+
+import java.util.List;
+
 /**
  * author：丁雯雯
  * time：2019/01/22
@@ -29,5 +32,11 @@ public class AdminManageServiceImpl implements AdminManageService {
             return true;
         else
             return false;
+    }
+
+    @Override
+    public List getAllUsersInfo() {
+        List ret=DaoFactory.getInstance().getUserDAO().findAllUser();
+        return ret;
     }
 }

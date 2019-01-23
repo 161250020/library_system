@@ -2,6 +2,8 @@ package factory;
 
 import service.*;
 import service.impl.*;
+import service.ElectronicBooksManageService;
+import service.OnlineReadModuleManageService;
 
 public class ServiceFactory {
     public static AdminManageService getAdminManageService(){
