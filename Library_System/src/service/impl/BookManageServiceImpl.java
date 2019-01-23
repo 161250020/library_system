@@ -1,5 +1,6 @@
 package service.impl;
 
+import factory.DaoFactory;
 import model.Book;
 import service.BookManageService;
 
@@ -18,12 +19,13 @@ public class BookManageServiceImpl implements BookManageService {
     }
     @Override
     public Book getBookInfoById(String id) {
-        return null;
+        Book book=DaoFactory.getInstance().getBookDAO().findBookByBookId(id);
+        return book;
     }
 
     @Override
     public void addBookInfo(Book newBook) {
-
+        DaoFactory.getInstance().getBookDAO().addBook(newBook);
     }
 
 //    @Override

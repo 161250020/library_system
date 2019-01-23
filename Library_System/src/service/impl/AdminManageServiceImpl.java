@@ -1,5 +1,6 @@
 package service.impl;
 
+import factory.DaoFactory;
 import model.Admin;
 import model.User;
 import service.AdminManageService;
@@ -17,12 +18,16 @@ public class AdminManageServiceImpl implements AdminManageService {
     }
 
     @Override
-    public void changeUserInfo(String id, User newUser) {
-
+    public void changeUserInfo(User newUser) {
+        DaoFactory.getInstance().getUserDAO().updateUser(newUser);
     }
 
     @Override
-    public void login(String name, String password) {
-
+    public boolean login(String name, String password) {
+        Admin admin=DaoFactory.getInstance().getAdminDAO().findAdminByName(name);
+        if(admin.getPassword().equals(password))
+            return true;
+        else
+            return false;
     }
 }
