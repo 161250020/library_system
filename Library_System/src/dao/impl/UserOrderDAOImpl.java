@@ -102,4 +102,28 @@ public class UserOrderDAOImpl implements UserOrderDAO {
         }
         return records;
     }
+
+    @Override
+    public UserOrder getUserOrder(String id) {
+        Connection conn = helper.getConnection();
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        UserOrder userOrder = new UserOrder();
+        try{
+            String sql = "SELECT * FROM userorder WHERE id=?";
+            stat = conn.prepareStatement(sql);
+            stat.setString(1,id);
+            rs = stat.executeQuery();
+            if (rs.next()){
+                userOrder = getFromSingleRs(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            helper.closeConnection(conn);
+            helper.closePreparedStatement(stat);
+
+        }
+        return userOrder;
+    }
 }

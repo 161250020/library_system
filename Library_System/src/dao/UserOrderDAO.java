@@ -12,4 +12,7 @@ public interface UserOrderDAO {
     public ArrayList<UserOrder> getAllUserOrder();
     //查找某用户的借阅记录
     public ArrayList<UserOrder> getAllUserOrder(User user);
+
+    //根据id查找某借阅记录
+    public UserOrder getUserOrder(String id);
 }
