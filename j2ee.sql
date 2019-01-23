@@ -122,6 +122,31 @@ LOCK TABLES `electronicbooks` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `lentbooklevel`
+--
+
+DROP TABLE IF EXISTS `lentbooklevel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lentbooklevel` (
+  `userType` varchar(100) NOT NULL,
+  `maxNum` int(11) DEFAULT NULL,
+  `maxPeriod` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userType`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lentbooklevel`
+--
+
+LOCK TABLES `lentbooklevel` WRITE;
+/*!40000 ALTER TABLE `lentbooklevel` DISABLE KEYS */;
+INSERT INTO `lentbooklevel` VALUES ('postgraduate',20,120),('teacher',30,180),('undergraduate',10,60);
+/*!40000 ALTER TABLE `lentbooklevel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `onlinereadmodule`
 --
 
@@ -142,6 +167,7 @@ CREATE TABLE `onlinereadmodule` (
 
 LOCK TABLES `onlinereadmodule` WRITE;
 /*!40000 ALTER TABLE `onlinereadmodule` DISABLE KEYS */;
+INSERT INTO `onlinereadmodule` VALUES ('1','word','reader_word'),('2','pdf','read_pdf');
 /*!40000 ALTER TABLE `onlinereadmodule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,6 +196,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('1','hello','123','123456',12,30,300);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,4 +237,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-23 11:14:09
+-- Dump completed on 2019-01-23 17:27:23
