@@ -12,7 +12,7 @@ public interface UserManageService {
      * function：根据用户ID获得用户的基本信息
      * from tables: user
      * */
-    public User getUserInfoById(String id);
+    public User getUserInfoByName(String name);
 
     /**
      * function：缴纳用户的罚款（用户ID， 需缴纳的罚款的金额）

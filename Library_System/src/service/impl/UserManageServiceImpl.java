@@ -16,7 +16,7 @@ public class UserManageServiceImpl implements UserManageService {
     }
 
     @Override
-    public User getUserInfoById(String id) {
+    public User getUserInfoByName(String name) {
         return null;
     }
 

@@ -11,8 +11,8 @@ public class ElectronicBooks {
     public String author;//图书作者信息---以免后续需要检索
     public String publishCompany;//出版社---以免后续需要检索
     public String documentFormat;//文档格式
-    public String content;//书籍内容存储---这里默认是varchar(100)大小，
-    // 其实书籍内容可以更大，然后数据库中存储书籍内容存放的URL，然后内容存储到另外的地方，但这里就简单表示吧？
+    public String filepath;//书籍内容存储的本地地址---这里默认是varchar(100)大小，
+    // 书籍内容很大，然后数据库中存储书籍内容存放的URL，然后内容存储到另外的地方
 
     public String getId() {
         return id;
@@ -62,11 +62,11 @@ public class ElectronicBooks {
         this.documentFormat = documentFormat;
     }
 
-    public String getContent() {
-        return content;
+    public String getFilepath() {
+        return filepath;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
     }
 }
