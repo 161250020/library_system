@@ -12,6 +12,10 @@
   </head>
   <body>
   <a href="jsps/users/Login.jsp">登录</a>
+  <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/test")%>">
+    <input type="submit" value="input" name="Submit">
+  </form>
+
   <script language="javascript">
       function openmydoc(){
           var doc=new ActiveXObject("Word.Application");
@@ -20,6 +24,6 @@
       }
   </script>
   <input type="button" value="ok" name="b1" onclick="openmydoc()" />
-  <a href="复习暂用.docx" type="application/ms-word">打开word </a>
+  <!--<a href="复习暂用.docx" type="application/ms-word">打开word </a> -->
   </body>
 </html>

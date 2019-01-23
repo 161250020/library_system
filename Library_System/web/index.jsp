@@ -12,6 +12,10 @@
   </head>
   <body>
   <a href="jsps/users/Login.jsp">登录</a>
+  <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/test")%>">
+    <input type="submit" value="input" name="Submit">
+  </form>
+
   <script language="javascript">
       function openmydoc(){
           var doc=new ActiveXObject("Word.Application");
