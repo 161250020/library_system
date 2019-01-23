@@ -5,6 +5,8 @@
   Time: 14:40
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="model.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,17 +42,42 @@
 
 </head>
 <body>
+<%
+    String username="";
+
+    Cookie[] cookies=request.getCookies();
+    Cookie cookie=null;
+    if(null!=cookies){
+        for(int i=0;i<cookies.length;i++){
+            cookie=cookies[i];
+            if(cookie.getName().equals("username")){
+                username=cookie.getValue();
+                break;
+            }
+        }
+    }
+
+    User u= (User) session.getAttribute("userInfo");
+    ArrayList<Book> arrBooks= (ArrayList<Book>) session.getAttribute("alreadyLentBooks");
+
+    String books="";
+    for(int i=0;i<arrBooks.size();i++){
+        books=books+arrBooks.get(i).getName()+";";
+    }
+%>
+
 <div class="panel panel-info">
     <!--标题-->
     <div class="panel-heading">
         <b class="panel-title">图书馆信息系统</b>
         <!--左边-->
         <div align="right">
-            <b id="b_userId" style="alignment: right">用户名：</b>
-            <button type="button" class="btn btn-default" style="alignment: right" onclick="">退出登录</button>
+            <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/toLoginJSP")%>">
+            <b id="b_userId" style="alignment: right">用户名：<%=username%></b>
+            <button type="submit" class="btn btn-default" style="alignment: right">退出登录</button>
+            </form>
         </div>
     </div>
-
     <!--内容-->
     <div class="panel-body">
         <div class="row" style="height: 2000px">
@@ -67,20 +94,20 @@
                         </div>
                     </li>
                     <br>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">个人信息</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/userInfo")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">个人信息</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">在借书籍</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/borrowBooks")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">在借书籍</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">在线阅读</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/onlineReadBook")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">在线阅读</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">借阅历史</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/borrowHistory")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">借阅历史</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">修改信息</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/editUserInfo")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">修改信息</a></button> </form>
                     </li>
                 </ul>
             </div>
@@ -95,7 +122,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">用户ID：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=u.getId()%></h5>
                         </div>
                     </div>
                     <br>
@@ -104,7 +131,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">用户名：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=u.getName()%></h5>
                         </div>
                     </div>
                     <br>
@@ -113,7 +140,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">身份：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=u.getType()%></h5>
                         </div>
                     </div>
                     <br>
@@ -122,7 +149,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">可借最大图书量：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=u.getMaxNum()%></h5>
                         </div>
                     </div>
                     <br>
@@ -131,7 +158,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">已借图书量：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=arrBooks.size()%></h5>
                         </div>
                     </div>
                     <br>
@@ -140,7 +167,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">已借图书名：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=books%></h5>
                         </div>
                     </div>
                     <br>
@@ -149,7 +176,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">可借阅图书最大时长：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=u.getMaxPeriod()%></h5>
                         </div>
                     </div>
                     <br>
@@ -158,7 +185,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">账户内金额：</h5>
                         </div>
                         <div class="two">
-                            <h5 style="font-family: 仿宋;font-weight: bold">xxxxxx</h5>
+                            <h5 style="font-family: 仿宋;font-weight: bold"><%=u.getMoney()%></h5>
                         </div>
                     </div>
                 </div>

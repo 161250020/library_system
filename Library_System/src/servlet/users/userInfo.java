@@ -1,19 +1,46 @@
 package servlet.users;
 
+import factory.ServiceFactory;
+import model.Book;
+import model.User;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "userInfo")
 public class userInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("servlet---userInfo");
 
+        HttpSession session=request.getSession(false);
+        ServletContext context = getServletContext();
+
+        //获得username的cookie
+        Cookie[] cookies=request.getCookies();
+        Cookie cookie=null;
+        if(null!=cookies){
+            for(int i=0;i<cookies.length;i++){
+                cookie=cookies[i];
+                if(cookie.getName().equals("username")){
+                    break;
+                }
+            }
+        }
+
+        //获得user需要表现在userInfo.jsp上面的信息
+        User u= ServiceFactory.getUserManageService().getUserInfoByName(cookie.getValue());
+        ArrayList<Book> arrBooks= (ArrayList<Book>) ServiceFactory.getUserOrderManageService().getInLentBooksById(cookie.getValue());
+        session=request.getSession(true);
+        session.setAttribute("userInfo", u);
+        session.setAttribute("alreadyLentBooks",  arrBooks);
+        context.getRequestDispatcher("/jsps/users/userInfo.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }

@@ -1,6 +1,4 @@
-package strategies.lendBooks;
-
-import model.OnlineReadModule;
+package otherModels.strategies.lendBooks;
 
 public interface Strategy {
     //用户借书权限---借书最大数目

@@ -1,7 +1,4 @@
-package strategies.lendBooks;
-
-import factory.DaoFactory;
-import model.OnlineReadModule;
+package otherModels.strategies.lendBooks;
 
 public class teacherStrategy implements Strategy {
 

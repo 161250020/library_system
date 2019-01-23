@@ -1,6 +1,4 @@
-package strategies.lendBooks;
-
-import model.OnlineReadModule;
+package otherModels.strategies.lendBooks;
 
 public class Context {
     private Strategy strategy;

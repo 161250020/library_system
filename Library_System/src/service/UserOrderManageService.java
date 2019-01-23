@@ -11,7 +11,7 @@ public interface UserOrderManageService {
 
     /**
      * function：获得用户正在借阅的书籍
-     * 根据用户的id获得用户正在借阅书籍的订单信息
+     * 根据用户的name获得用户正在借阅书籍的订单信息
      * */
     public List getInLentBooksById(String name);
 

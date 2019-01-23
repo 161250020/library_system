@@ -1,4 +1,4 @@
-package strategies.readEBooks;
+package otherModels.strategies.readEBooks;
 
 import factory.DaoFactory;
 import model.OnlineReadModule;

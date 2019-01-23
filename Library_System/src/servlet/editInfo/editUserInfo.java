@@ -10,10 +10,10 @@ import java.io.IOException;
 @WebServlet(name = "editUserInfo")
 public class editUserInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("servlet---editUserInfo");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }

@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>login</title>
-    <link rel="stylesheet" href="../../css/login/style.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() + "/css/login/style.css"%>"/>
 </head>
 <body>
 <div class="login-container">
@@ -20,14 +20,23 @@
         <p>登录</p>
     </div>
 
-    <form action="" method="post" id="loginForm">
+    <form action="<%=response.encodeURL(request.getContextPath() + "/Login")%>" method="post" id="loginForm">
         <div>
             <input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
         </div>
         <div>
             <input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
         </div>
-        <button id="submit" type="submit">登 陆</button>
+        <%
+            String loginInfo= (String) request.getAttribute("loginInfo");
+            if (loginInfo!=null){
+                loginInfo="登录提示："+loginInfo;
+            }
+            else
+                loginInfo="";
+        %>
+        <%=loginInfo%>
+        <button type="submit" name="submit" value="login">登 陆</button>
     </form>
 
 </div>

@@ -1,10 +1,4 @@
-package strategies.lendBooks;
-
-import factory.DaoFactory;
-import model.OnlineReadModule;
-import model.User;
-
-import java.util.ArrayList;
+package otherModels.strategies.lendBooks;
 
 public class postgraduateStrategy implements Strategy {
 

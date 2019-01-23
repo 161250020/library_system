@@ -10,10 +10,10 @@ import java.io.IOException;
 @WebServlet(name = "borrowBooks")
 public class borrowBooks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("servlet---borrowBooks");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }
