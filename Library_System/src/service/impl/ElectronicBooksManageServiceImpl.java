@@ -1,8 +1,10 @@
 package service.impl;
 
+import factory.DaoFactory;
 import model.ElectronicBooks;
 import service.ElectronicBooksManageService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +22,25 @@ public class ElectronicBooksManageServiceImpl implements ElectronicBooksManageSe
 
     @Override
     public ElectronicBooks getElectronicBookInfoById(String id) {
-        return null;
+        ArrayList<ElectronicBooks> arr=DaoFactory.getInstance().getElectronicBooksDAO().getAllElectronicBooks();
+        ElectronicBooks ebook=new ElectronicBooks();
+        for(int i=0;i<arr.size();i++){
+            if(arr.get(i).getId().equals(id)){
+                ebook=arr.get(i);
+            }
+        }
+        return ebook;
     }
 
     @Override
     public List getElectronicBooksInfoByName(String name) {
-        return null;
+        ArrayList<ElectronicBooks> arr=DaoFactory.getInstance().getElectronicBooksDAO().getAllElectronicBooks();
+        ElectronicBooks ebook=new ElectronicBooks();
+        for(int i=0;i<arr.size();i++){
+            if(!arr.get(i).getName().equals(name)){
+                arr.remove(i);
+            }
+        }
+        return arr;
     }
 }

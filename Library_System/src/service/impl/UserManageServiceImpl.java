@@ -1,5 +1,6 @@
 package service.impl;
 
+import factory.DaoFactory;
 import model.User;
 import service.UserManageService;
 /**
@@ -17,22 +18,38 @@ public class UserManageServiceImpl implements UserManageService {
 
     @Override
     public User getUserInfoByName(String name) {
-        return null;
+        User u= DaoFactory.getInstance().getUserDAO().findUserByUsername(name);
+        return u;
     }
 
     @Override
-    public void payAFine(String id, double fineMoney) {
-
+    public void payAFine(String name, double fineMoney) {
+        User u=DaoFactory.getInstance().getUserDAO().findUserByUsername(name);
+        double preMon=u.getMoney();
+        u.setMoney(preMon-fineMoney);
+        DaoFactory.getInstance().getUserDAO().updateUser(u);
     }
 
     @Override
-    public void changePass(String id, String laterPass) {
-
+    public void changePass(String name, String laterPass) {
+        User u=DaoFactory.getInstance().getUserDAO().findUserByUsername(name);
+        u.setPassword(laterPass);
+        DaoFactory.getInstance().getUserDAO().updateUser(u);
     }
 
     @Override
-    public void login(String name, String password) {
-
+    public String login(String name, String password) {
+        User u=null;
+        u=DaoFactory.getInstance().getUserDAO().findUserByUsername(name);
+        if(u==null){
+            return "invalid username";
+        }
+        else{
+            if(u.getPassword().equals(password))
+                return "success login";
+            else
+                return "error password";
+        }
     }
 
 //    @Override

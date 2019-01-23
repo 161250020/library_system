@@ -8,14 +8,14 @@ import model.User;
  */
 public interface AdminManageService {
     /**
-     * function：修改用户信息（原用户ID， 修改成为的用户）
+     * function：修改用户信息（修改成为的用户）---原用户ID和name，不变
      * change tables：user
      * */
-    public void changeUserInfo(String id, User newUser);
+    public void changeUserInfo(User newUser);
 
     /**
      * function：登录（管理员ID， 密码）
      * from tables：admin
      * */
-    public void login(String name, String password);
+    public boolean login(String name, String password);
 }

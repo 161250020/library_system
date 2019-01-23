@@ -1,5 +1,6 @@
 package service.impl;
 
+import factory.DaoFactory;
 import model.OnlineReadModule;
 import service.OnlineReadModuleManageService;
 /**
@@ -17,6 +18,8 @@ public class OnlineReadModuleManageServiceImpl implements OnlineReadModuleManage
 
     @Override
     public OnlineReadModule getOnlineReadModuleByDocumentFormat(String documentFormat) {
-        return null;
+        OnlineReadModule orm=new OnlineReadModule();
+        orm= DaoFactory.getInstance().getOnlineReadModuleDAO().findModule(documentFormat);
+        return orm;
     }
 }
