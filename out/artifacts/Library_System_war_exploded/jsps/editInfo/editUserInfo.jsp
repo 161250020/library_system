@@ -40,14 +40,34 @@
 
 </head>
 <body>
+
+<%
+    String username="";
+
+    Cookie[] cookies=request.getCookies();
+    Cookie cookie=null;
+    if(null!=cookies){
+        for(int i=0;i<cookies.length;i++){
+            cookie=cookies[i];
+            if(cookie.getName().equals("username")){
+                username=cookie.getValue();
+                break;
+            }
+        }
+    }
+
+%>
+
 <div class="panel panel-info">
     <!--标题-->
     <div class="panel-heading">
         <b class="panel-title">图书馆信息系统</b>
         <!--左边-->
         <div align="right">
-            <b id="b_userId" style="alignment: right">用户名：</b>
-            <button type="button" class="btn btn-default" style="alignment: right" onclick="">退出登录</button>
+            <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/toLoginJSP")%>">
+                <b id="b_userId" style="alignment: right">用户名：<%=username%></b>
+                <button type="submit" class="btn btn-default" style="alignment: right">退出登录</button>
+            </form>
         </div>
     </div>
 
@@ -67,20 +87,20 @@
                         </div>
                     </li>
                     <br>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">个人信息</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/userInfo")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">个人信息</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">在借书籍</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/borrowBooks")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">在借书籍</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">在线阅读</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/onlineReadBook")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">在线阅读</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">借阅历史</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/borrowHistory")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">借阅历史</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">修改信息</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/editUserInfo")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">修改信息</a></button> </form>
                     </li>
                 </ul>
             </div>

@@ -11,9 +11,17 @@ public class UserOrder {
     public String userId;//借阅用户的id
     public String bookId;//借阅图书的id
     public Date borrowTime;//开始借阅的时间
-    public Date returnTime;//还书的时间：未还书：0000-00-00；函还书：date;
+    public Date returnTime;//还书的时间：未还书：1000-01-01；函还书：date;
     public int fineDay;//逾期的天数：未还书：-1；未逾期：0；逾期：x；
-    public int alreadyPay;//逾期罚款的钱是否已交；已交：1；未交：0；未还书：-1；
+    public int alreadyPay;//逾期罚款的钱是否已交；已交：1；未交：0；未还书：-1；（未逾期时未缴纳也为0，缴纳了才为1）
+    //未还书：fineDay=-1；
+    //已还书：fineDay=0（未逾期）/x（逾期天数）;
+    //  有罚款：
+    //      已缴纳：alreadyPay=1；
+    //      未缴纳：alreadyPay=0；
+    //  无罚款：
+    //      已缴纳：alreadyPay=1；
+    //      未缴纳：alreadyPay=0；
 
     public String getId() {
         return id;

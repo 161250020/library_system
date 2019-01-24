@@ -3,6 +3,7 @@ package servlet.users;
 import factory.ServiceFactory;
 import model.Book;
 import model.User;
+import model.UserOrder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,9 +34,15 @@ public class userInfo extends HttpServlet {
 
         //获得user需要表现在userInfo.jsp上面的信息
         User u= ServiceFactory.getUserManageService().getUserInfoByName(cookie.getValue());
-        ArrayList<Book> arrBooks= (ArrayList<Book>) ServiceFactory.getUserOrderManageService().getInLentBooksById(cookie.getValue());
+        ArrayList<UserOrder> arrUserOrder= (ArrayList<UserOrder>) ServiceFactory.getUserOrderManageService().getInLentBooksUserOrderById(cookie.getValue());
+        ArrayList<Book> arrBooks=new ArrayList();
+        for(int i=0;i<arrUserOrder.size();i++){
+            Book b=ServiceFactory.getBookManageService().getBookInfoById(arrUserOrder.get(i).getBookId());
+            arrBooks.add(b);
+        }
         session=request.getSession(true);
         session.setAttribute("userInfo", u);
+        session.setAttribute("alreadyLentBooksUserOrder",  arrUserOrder);
         session.setAttribute("alreadyLentBooks",  arrBooks);
         context.getRequestDispatcher("/jsps/users/userInfo.jsp").forward(request, response);
     }

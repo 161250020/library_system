@@ -1,4 +1,10 @@
-<%--
+<%@ page import="model.User" %>
+<%@ page import="factory.ServiceFactory" %>
+<%@ page import="model.UserOrder" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Book" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
@@ -56,6 +62,69 @@
         }
     }
 
+    User u= (User) session.getAttribute("userInfo");
+    ArrayList<UserOrder> arrUserOrder= (ArrayList<UserOrder>) session.getAttribute("allLentBooksUserOrder");
+    ArrayList<Book> arrBooks= (ArrayList<Book>) session.getAttribute("allLentBooks");
+
+    //罚款状态：未缴纳，已缴纳，未还书，未缴纳
+    ArrayList<String> fineStates=new ArrayList();
+    //逾期天数
+    ArrayList<Integer> fineDays=new ArrayList();
+    //计算剩余未缴纳罚款总金额
+    double sumFineMoney=0;
+    //应罚金额
+    ArrayList<String> arrFineMoneyPerBook=new ArrayList();
+    for(int i=0;i<arrUserOrder.size();i++){
+        if(arrUserOrder.get(i).getFineDay()==-1){//未还书
+            arrFineMoneyPerBook.add("--");
+            fineStates.add("未还书");
+            fineDays.add(0);
+        }
+        else if(arrUserOrder.get(i).getFineDay()==0){//未逾期
+            arrFineMoneyPerBook.add("0");
+            fineStates.add("未逾期");
+            fineDays.add(0);
+        }
+        else{//已还书
+            double m=arrBooks.get(i).getFineMoneyPerDay();
+            int d=arrUserOrder.get(i).getFineDay();
+            double sum=d*m;
+            arrFineMoneyPerBook.add(sum+"");//每本书缴纳的罚款
+            fineDays.add(arrUserOrder.get(i).getFineDay());
+            //已缴纳---不算在sum money当中
+            if(arrUserOrder.get(i).getAlreadyPay()==1){
+                fineStates.add("已缴纳");
+            }
+            else{//未缴纳---计算在sum money当中
+                fineStates.add("未缴纳");
+                sumFineMoney=sumFineMoney+sum;
+            }
+        }
+    }
+
+    //借出日期
+    ArrayList<String> arrBorrowDay=new ArrayList();
+    //归还日期
+    ArrayList<String> arrReturnDay=new ArrayList();
+    for(int i=0;i<arrUserOrder.size();i++){
+        java.text.SimpleDateFormat formatter=new SimpleDateFormat( "yyyy-MM-dd ");
+
+        //借出日期转换成字符串
+        Date d1=arrUserOrder.get(i).getBorrowTime();
+        String str1=formatter.format(d1);
+        arrBorrowDay.add(str1);
+        //归还日期转换成字符串---注意书籍的借阅状态（未还书："--"，还书）
+        if(arrUserOrder.get(i).getFineDay()==-1){//未还书
+            arrReturnDay.add("--");
+        }
+        else{//已还书
+            Date d2=arrUserOrder.get(i).getReturnTime();
+            String str2=formatter.format(d2);
+            arrReturnDay.add(str2);
+        }
+    }
+
+    session.setAttribute("sumFineMoney", sumFineMoney);
 %>
 
 <div class="panel panel-info">
@@ -113,6 +182,17 @@
                     <div class="panel panel-default">
                         <table class="table" id="project">
                             <th>订单ID</th><th>书籍ID</th><th>书名</th><th>借出日期</th><th>归还日期</th><th>逾期天数</th><th>逾期罚款（元/天）</th><th>应罚金额</th><th>罚款状态</th>
+                            <%
+                                for(int i=0;i<arrUserOrder.size();i++){
+                                    out.println("<tr>\n" +
+                                            "<td>"+arrUserOrder.get(i).getId()+"</td><td>"+arrBooks.get(i).getId()+"</td>" +
+                                            "<td>"+arrBooks.get(i).getName()+"</td><td>"+arrBorrowDay.get(i)+"</td>" +
+                                            "<td>"+arrReturnDay.get(i)+"</td><td>"+fineDays.get(i)+"</td>" +
+                                            "<td>"+arrBooks.get(i).getFineMoneyPerDay()+"</td><td>"+arrFineMoneyPerBook.get(i)+"</td>" +
+                                            "<td>"+fineStates.get(i)+"</td>\n" +
+                                            "</tr>");
+                                }
+                            %>
                         </table>
                     </div>
                 </div>
@@ -120,10 +200,12 @@
                 <div>
                     <div class="one">
                         <b>剩余未缴罚款总金额：</b>
-                        <b id="sum_fine_money">xxxxxx</b>
+                        <b id="sum_fine_money"><%=sumFineMoney%></b>
                     </div>
                     <div class="two">
-                        <%--<button type="button" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>--%>
+                        <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/payFine")%>">
+                            <button type="submit" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>
+                        </form>
                     </div>
                 </div>
             </div>

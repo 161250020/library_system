@@ -1,8 +1,6 @@
 package servlet.borrowBook;
 
 import factory.ServiceFactory;
-import model.Book;
-import model.User;
 import model.UserOrder;
 
 import javax.servlet.ServletContext;
@@ -12,10 +10,10 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "borrowHistory")
-public class borrowHistory extends HttpServlet {
+@WebServlet("/payFine")
+public class payFine extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("servlet---borrowHistory");
+        System.out.println("servlet---payFine");
 
         HttpSession session=request.getSession(false);
         ServletContext context = getServletContext();
@@ -32,21 +30,22 @@ public class borrowHistory extends HttpServlet {
             }
         }
 
-        //获得user需要表现在userInfo.jsp上面的信息
-        User u= ServiceFactory.getUserManageService().getUserInfoByName(cookie.getValue());
-        ArrayList<UserOrder> arrUserOrder= (ArrayList<UserOrder>) ServiceFactory.getUserOrderManageService().getAllLentBooksUserOrderById(cookie.getValue());
-        ArrayList<Book> arrBooks=new ArrayList();
-        for(int i=0;i<arrUserOrder.size();i++){
-            Book b=ServiceFactory.getBookManageService().getBookInfoById(arrUserOrder.get(i).getBookId());
-            arrBooks.add(b);
+        //缴纳罚款
+        //修改用户金额
+        double sumFineMoney= (double) session.getAttribute("sumFineMoney");
+        ServiceFactory.getUserManageService().payAFine(cookie.getValue(), sumFineMoney);
+        session.setAttribute("sumFineMoney",0);
+        //修改userorder的信息---订单的状态---罚款是否已经缴纳
+        ArrayList<UserOrder> arrAllLentBooksUserOrder= (ArrayList<UserOrder>) session.getAttribute("allLentBooksUserOrder");
+        for(int i=0;i<arrAllLentBooksUserOrder.size();i++){
+            if(arrAllLentBooksUserOrder.get(i).getFineDay()!=-1){//不为未还书的订单的信息
+                ServiceFactory.getUserOrderManageService()
+                        .payFineAndChangeTableUserorder(arrAllLentBooksUserOrder.get(i).getId());
+            }
         }
 
-        session=request.getSession(true);
-        session.setAttribute("userInfo", u);
-        session.setAttribute("allLentBooksUserOrder",  arrUserOrder);
-        session.setAttribute("allLentBooks",  arrBooks);
+        //跳转到borrowHistory的页面
         context.getRequestDispatcher("/jsps/borrowBook/borrowHistory.jsp").forward(request, response);
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

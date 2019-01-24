@@ -25,7 +25,7 @@ public class UserOrderManageServiceImpl implements UserOrderManageService {
     }
 
     @Override
-    public List getInLentBooksById(String name) {
+    public List getInLentBooksUserOrderById(String name) {
         User u=DaoFactory.getInstance().getUserDAO().findUserByUsername(name);
         ArrayList<UserOrder> arrUserOrder= DaoFactory.getInstance().getUserOrderDAO().getAllUserOrder(u);
 
@@ -40,7 +40,7 @@ public class UserOrderManageServiceImpl implements UserOrderManageService {
     }
 
     @Override
-    public List getAllLentBooksById(String name) {
+    public List getAllLentBooksUserOrderById(String name) {
         User u=DaoFactory.getInstance().getUserDAO().findUserByUsername(name);
         ArrayList<UserOrder> arrUserOrder= DaoFactory.getInstance().getUserOrderDAO().getAllUserOrder(u);
 
@@ -53,21 +53,8 @@ public class UserOrderManageServiceImpl implements UserOrderManageService {
     }
 
     @Override
-    public void payFineAndChangeTableUserorder(String id, int fineDay) {
+    public void payFineAndChangeTableUserorder(String id) {
         UserOrder uo=DaoFactory.getInstance().getUserOrderDAO().getUserOrder(id);
-        //当前时间
-        Date nowTime = new Date(System.currentTimeMillis());
-        SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String dateStringToParse = bartDateFormat.format(nowTime);
-        java.util.Date date = null;
-        try {
-            date = bartDateFormat.parse(dateStringToParse);
-        } catch (ParseException e1) {
-            e1.printStackTrace();
-        }
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-        uo.setReturnTime(sqlDate);
-        uo.setFineDay(fineDay);
         uo.setAlreadyPay(1);
         DaoFactory.getInstance().getUserOrderDAO().updateUserOrder(uo);
     }

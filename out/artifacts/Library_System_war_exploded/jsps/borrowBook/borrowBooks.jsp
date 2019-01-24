@@ -1,4 +1,13 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Book" %>
+<%@ page import="model.UserOrder" %>
+<%@ page import="model.User" %>
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="otherModels.strategies.lendBooks.Context" %>
+<%@ page import="otherModels.strategies.lendBooks.undergraduateStrategy" %>
+<%@ page import="otherModels.strategies.lendBooks.postgraduateStrategy" %>
+<%@ page import="otherModels.strategies.lendBooks.teacherStrategy" %><%--
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
@@ -40,14 +49,56 @@
 
 </head>
 <body>
+
+<%
+    String username="";
+
+    Cookie[] cookies=request.getCookies();
+    Cookie cookie=null;
+    if(null!=cookies){
+        for(int i=0;i<cookies.length;i++){
+            cookie=cookies[i];
+            if(cookie.getName().equals("username")){
+                username=cookie.getValue();
+                break;
+            }
+        }
+    }
+
+    ArrayList<Book> arrBooks= (ArrayList<Book>) session.getAttribute("alreadyLentBooks");
+    ArrayList<UserOrder> arrUserOrder= (ArrayList<UserOrder>) session.getAttribute("alreadyLentBooksUserOrder");
+    User u= (User) session.getAttribute("userInfo");
+    ArrayList<String> borrowTimes=new ArrayList();
+    for(int i=0;i<arrUserOrder.size();i++){
+        Date d=arrUserOrder.get(i).getBorrowTime();
+        java.text.SimpleDateFormat formatter=new SimpleDateFormat( "yyyy-MM-dd ");
+        borrowTimes.add(formatter.format(d));
+    }
+
+    //策略模式获得可借阅时间
+    Context con;
+    if(u.getType().equals("undergraduate")){
+        con=new Context(new undergraduateStrategy());
+    }
+    else if(u.getType().equals("postgraduate")){
+        con=new Context(new postgraduateStrategy());
+    }
+    else{
+        con=new Context(new teacherStrategy());
+    }
+    int canBorrowTime=con.maxPeriod();
+%>
+
 <div class="panel panel-info">
     <!--标题-->
     <div class="panel-heading">
         <b class="panel-title">图书馆信息系统</b>
         <!--左边-->
         <div align="right">
-            <b id="b_userId" style="alignment: right">用户名：</b>
-            <button type="button" class="btn btn-default" style="alignment: right" onclick="">退出登录</button>
+            <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/toLoginJSP")%>">
+                <b id="b_userId" style="alignment: right">用户名：<%=username%></b>
+                <button type="submit" class="btn btn-default" style="alignment: right">退出登录</button>
+            </form>
         </div>
     </div>
 
@@ -67,20 +118,20 @@
                         </div>
                     </li>
                     <br>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">个人信息</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/userInfo")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">个人信息</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">在借书籍</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/borrowBooks")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">在借书籍</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">在线阅读</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/onlineReadBook")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">在线阅读</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">借阅历史</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/borrowHistory")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">借阅历史</a></button> </form>
                     </li>
-                    <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" onclick="">修改信息</a></button>
+                    <li><form method="post" action="<%=response.encodeURL(request.getContextPath() + "/editUserInfo")%>">
+                        <button type="submit" class="button secondary" style="width: 100%"><a href="#">修改信息</a></button> </form>
                     </li>
                 </ul>
             </div>
@@ -88,10 +139,19 @@
             <!--右边-->
             <div class="col-md-9" style="background-color: white;box-shadow: inset 1px -1px 1px #f7ff62, inset -1px 1px 1px #fff626;height: 70%;">
                 <br>
-                <br>
+                <br><b style="alignment: right">可借阅天数：<%=canBorrowTime%></b>
                 <div class="panel panel-default">
                     <table class="table" id="project">
-                        <th>书籍ID</th><th>书籍分类</th><th>书名</th><th>作者</th><th>出版设</th><th>借出日期</th><th>剩余天数</th>
+                        <th>书籍ID</th><th>书籍分类</th><th>书名</th><th>作者</th><th>出版设</th><th>借出日期</th>
+                        <%
+                            for(int i=0;i<borrowTimes.size();i++){
+                                out.println("<tr>\n" +
+                                        "<td>"+arrBooks.get(i).getId()+"</td><td>"+arrBooks.get(i).getType()+"</td>" +
+                                        "<td>"+arrBooks.get(i).getName()+"</td><td>"+arrBooks.get(i).getAuthor()+"</td>" +
+                                        "<td>"+arrBooks.get(i).getPublishCompany()+"</td><td>"+borrowTimes.get(i)+"</td>\n" +
+                                        "</tr>");
+                            }
+                        %>
                     </table>
                 </div>
             </div>
