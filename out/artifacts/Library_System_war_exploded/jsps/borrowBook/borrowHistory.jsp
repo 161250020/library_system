@@ -66,7 +66,7 @@
     ArrayList<UserOrder> arrUserOrder= (ArrayList<UserOrder>) session.getAttribute("allLentBooksUserOrder");
     ArrayList<Book> arrBooks= (ArrayList<Book>) session.getAttribute("allLentBooks");
 
-    //罚款状态：未缴纳，已缴纳，未还书
+    //罚款状态：未缴纳，已缴纳，未还书，未缴纳
     ArrayList<String> fineStates=new ArrayList();
     //逾期天数
     ArrayList<Integer> fineDays=new ArrayList();
@@ -85,14 +85,20 @@
             fineStates.add("未逾期");
             fineDays.add(0);
         }
-        else{//已缴纳
+        else{//已还书
             double m=arrBooks.get(i).getFineMoneyPerDay();
             int d=arrUserOrder.get(i).getFineDay();
             double sum=d*m;
-            sumFineMoney=sumFineMoney+sum;
-            arrFineMoneyPerBook.add(sum+"");
-            fineStates.add("已缴纳");
+            arrFineMoneyPerBook.add(sum+"");//每本书缴纳的罚款
             fineDays.add(arrUserOrder.get(i).getFineDay());
+            //已缴纳---不算在sum money当中
+            if(arrUserOrder.get(i).getAlreadyPay()==1){
+                fineStates.add("已缴纳");
+            }
+            else{//未缴纳---计算在sum money当中
+                fineStates.add("未缴纳");
+                sumFineMoney=sumFineMoney+sum;
+            }
         }
     }
 
@@ -198,7 +204,7 @@
                     </div>
                     <div class="two">
                         <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/payFine")%>">
-                            <button type="button" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>
+                            <button type="submit" class="btn btn-default" style="alignment: right" onclick="">缴纳罚款</button>
                         </form>
                     </div>
                 </div>

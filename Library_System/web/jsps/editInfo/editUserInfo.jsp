@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Enumeration" %><%--
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
@@ -56,6 +56,16 @@
         }
     }
 
+    //修改密码的结果："密码修改结果：修改成功！", "密码修改结果：两次输入密码不同！", "密码修改结果：原密码输入错误！"
+    String changePsssResult="";
+    for(Enumeration e = request.getAttributeNames(); e.hasMoreElements();){
+        Object o=e.nextElement();
+        String name= (String) o;
+        if(name.equals("changePassResult")){
+            changePsssResult= (String) request.getAttribute("changePassResult");//获得密码修改结果
+            break;
+        }
+    }
 %>
 
 <div class="panel panel-info">
@@ -109,13 +119,14 @@
             <div class="col-md-9" style="background-color: white;box-shadow: inset 1px -1px 1px #f7ff62, inset -1px 1px 1px #fff626;height: 70%;">
                 <br>
                 <br>
+                <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/changePassResult")%>">
                 <div class="panel panel-default" align="left">
                     <div style="height: 40px">
                         <div class="one">
                             <h5 style="font-family: 仿宋;font-weight: bold">原密码：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="pre_pass">
+                            <input type="password" class="form-control" name="pre_pass">
                         </div>
                     </div>
                     <br>
@@ -124,7 +135,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">新密码：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="new_pass">
+                            <input type="password" class="form-control" name="new_pass">
                         </div>
                     </div>
                     <br>
@@ -133,15 +144,17 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">确认新密码：</h5>
                         </div>
                         <div class="two">
-                            <input type="password" class="form-control" id="reInputNew_pass">
+                            <input type="password" class="form-control" name="reInputNew_pass">
                         </div>
                     </div>
                     <br>
                     <br>
+                    <b><%=changePsssResult%></b>
                     <div align="center">
-                        <button type="button" class="button warning tiny" style="width: 50%" onclick="modify_pass()">确认</button>
+                        <button type="submit" class="button warning tiny" style="width: 50%">确认</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

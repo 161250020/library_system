@@ -16,7 +16,6 @@ public class payFine extends HttpServlet {
         System.out.println("servlet---payFine");
 
         HttpSession session=request.getSession(false);
-        ServletContext context = getServletContext();
 
         //获得username的cookie
         Cookie[] cookies=request.getCookies();
@@ -44,8 +43,8 @@ public class payFine extends HttpServlet {
             }
         }
 
-        //跳转到borrowHistory的页面
-        context.getRequestDispatcher("/jsps/borrowBook/borrowHistory.jsp").forward(request, response);
+        //跳转到servlet，重写borrowHistory.jsp页面的数据
+        response.sendRedirect(request.getContextPath()+"/borrowHistory");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
