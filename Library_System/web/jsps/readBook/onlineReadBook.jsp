@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.ElectronicBooks" %>
+<%@ page import="java.util.Enumeration" %><%--
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
@@ -56,6 +58,22 @@
         }
     }
 
+    //获得搜索到的ebooks，获得之后，将name为allFoundEBooks的session的值改为：""
+    ArrayList<ElectronicBooks> allFoundEBooks=new ArrayList();
+    if(!session.getAttribute("allFoundEBooks").equals("")){//当名为allFoundEBooks的session的attribute不为""的时候
+        allFoundEBooks= (ArrayList<ElectronicBooks>) session.getAttribute("allFoundEBooks");
+        session.setAttribute("allFoundEBooks", "");
+    }
+
+    String errInfo="";
+    for(Enumeration e = request.getAttributeNames(); e.hasMoreElements();){
+        Object o=e.nextElement();
+        String name= (String) o;
+        if(name.equals("errInfo")){
+            errInfo= (String) request.getAttribute("errInfo");//获得寻找电子书的返回错误提醒
+            break;
+        }
+    }
 %>
 
 <div class="panel panel-info">
@@ -109,6 +127,7 @@
             <div class="col-md-9" style="background-color: white;box-shadow: inset 1px -1px 1px #f7ff62, inset -1px 1px 1px #fff626;height: 70%;">
                 <br>
                 <br>
+                <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/findEBooksResult")%>">
                 <div class="panel panel-default" align="left">
                     <b>搜索在线书籍：</b>
                     <hr>
@@ -117,7 +136,7 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">书籍名：</h5>
                         </div>
                         <div class="two">
-                            <input class="form-control" id="book_name">
+                            <input class="form-control" name="book_name">
                         </div>
                     </div>
                     <br>
@@ -129,16 +148,42 @@
                             <h5 style="font-family: 仿宋;font-weight: bold">电子书ID：</h5>
                         </div>
                         <div class="two">
-                            <input class="form-control" id="book_id">
+                            <input class="form-control" name="book_id">
                         </div>
                     </div>
                     <br>
+                    <br>
+                    <div align="center">
+                        <button type="submit" class="button warning tiny" style="width: 50%">确认</button>
+                    </div>
                     <hr>
                     <b>搜索结果：</b>
                     <table class="table" id="project">
                         <th>书籍ID</th><th>书籍分类</th><th>书名</th><th>作者</th><th>出版设</th><th>文档格式</th>
+                        <%
+                            for(int i=0;i<allFoundEBooks.size();i++){
+                                out.println("<tr>\n" +
+                                        "<td>"+allFoundEBooks.get(i).getId()+"</td><td>"+allFoundEBooks.get(i).getType()+"</td>" +
+                                        "<td>"+allFoundEBooks.get(i).getName()+"</td><td>"+allFoundEBooks.get(i).getAuthor()+"</td>" +
+                                        "<td>"+allFoundEBooks.get(i).getPublishCompany()+"</td><td>"+allFoundEBooks.get(i).getDocumentFormat()+"</td>\n" +
+                                        "</tr>");
+                            }
+                        %>
                     </table>
                 </div>
+                </form>
+                <hr>
+                <b>输入电子书ID来阅读电子书：</b>
+                <form method="post" action="<%=response.encodeURL(request.getContextPath() + "/onlineInReadingBook")%>">
+                    <div class="one">
+                        <input class="form-control" name="eBookId" placeholder="阅读的电子书的ID...">
+                    </div>
+                    <div class="two" align="center">
+                        <button type="submit" class="btn btn-default" style="alignment: right">阅读此书</button>
+                    </div>
+                    <br>
+                    <b><%=errInfo%></b>
+                </form>
             </div>
         </div>
     </div>

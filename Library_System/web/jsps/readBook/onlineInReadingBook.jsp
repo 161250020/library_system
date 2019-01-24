@@ -1,4 +1,8 @@
-<%--
+<%@ page import="model.ElectronicBooks" %>
+<%@ page import="otherModels.strategies.readEBooks.Context" %>
+<%@ page import="otherModels.strategies.readEBooks.pdfStrategy" %>
+<%@ page import="otherModels.strategies.readEBooks.wordStrategy" %>
+<%@ page import="model.OnlineReadModule" %><%--
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
@@ -56,6 +60,18 @@
         }
     }
 
+    ElectronicBooks ebookInfo=new ElectronicBooks();
+    ebookInfo= (ElectronicBooks) session.getAttribute("ebookInfo");
+    String path=ebookInfo.getFilepath();
+    session.setAttribute("ebookInfo",new ElectronicBooks());//获取完电子书的信息就清除
+
+    //通过strategy获得文档阅读器的onlineReadModule
+    Context con=new Context(new pdfStrategy());//默认PDF阅读器
+    if(ebookInfo.getDocumentFormat().equals("word")){
+        con=new Context(new wordStrategy());
+    }
+    OnlineReadModule onlineReadModule=con.chooseModule();
+    String onlineReaderType=onlineReadModule.getDocumentReader();
 %>
 
 <div class="panel panel-info">
@@ -112,13 +128,24 @@
                 <div class="panel panel-default" align="left">
                     <table class="table" id="project">
                         <th>书籍ID</th><th>书籍分类</th><th>书名</th><th>作者</th><th>出版设</th><th>文档格式</th><th>文档阅读器</th>
+                        <%
+                            out.println("<tr>\n" +
+                                    "<td>"+ebookInfo.getId()+"</td><td>"+ebookInfo.getType()+"</td>" +
+                                    "<td>"+ebookInfo.getName()+"</td><td>"+ebookInfo.getAuthor()+"</td>" +
+                                    "<td>"+ebookInfo.getPublishCompany()+"</td><td>"+ebookInfo.getDocumentFormat()+"</td>" +
+                                    "<td>"+onlineReadModule.getDocumentReader()+"</td>\n" +
+                                    "</tr>");
+                        %>
                     </table>
-
                     <br>
                     <b>内容如下：</b>
                     <!--在线阅读的内容显示如下-->
                     <div style="height: 500px;background-color: white">
-
+                        此电子书的路径（可以通过这个获得在线电子书阅读所需要加载的内容）：<%=path%>
+                        <br>
+                        此电子书的在线阅读器类型（可以通过这个使用不同的在线阅读器加载电子书的内容）：<%=onlineReaderType%>
+                        <br>
+                        在线多种类型文档阅读......
                     </div>
                 </div>
             </div>

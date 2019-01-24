@@ -64,6 +64,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES ('idbook1','booktype1','book1','authorbook1','publishcbook1','out',0.2),('idbook2','booktype2','book2','authorbook2','publishcbook2','out',0.3),('idbook3','booktype3','book3','authorbook3','publishcbook3','in',0.4),('idbook4','booktype4','book4','authorbook4','publishcbook4','in',0.6);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +78,7 @@ DROP TABLE IF EXISTS `edituserinfoorder`;
 CREATE TABLE `edituserinfoorder` (
   `id` varchar(100) NOT NULL,
   `userId` varchar(100) DEFAULT NULL,
-  `changeTime` datetime DEFAULT NULL,
+  `changeTime` date DEFAULT NULL,
   `prePass` varchar(100) DEFAULT NULL,
   `laterPass` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -90,6 +91,7 @@ CREATE TABLE `edituserinfoorder` (
 
 LOCK TABLES `edituserinfoorder` WRITE;
 /*!40000 ALTER TABLE `edituserinfoorder` DISABLE KEYS */;
+INSERT INTO `edituserinfoorder` VALUES ('3214f25c-2c8e-42bb-9d5c-d3595b89744b','1','2019-01-24','123','456'),('561f2482-9849-4a16-a429-662b67313509','1','2019-01-24','456','789'),('7cf84104-9c23-4cde-ad76-c0d04b1023c9','1','2019-01-24','789','123'),('9f30c783-924b-45ca-a0e5-ed8467bf8fa0','1','2019-01-24','123','456');
 /*!40000 ALTER TABLE `edituserinfoorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,6 +120,7 @@ CREATE TABLE `electronicbooks` (
 
 LOCK TABLES `electronicbooks` WRITE;
 /*!40000 ALTER TABLE `electronicbooks` DISABLE KEYS */;
+INSERT INTO `electronicbooks` VALUES ('1','we','wer','wert','werty','word','path1'),('2','we2','wer2','wert2','wertyuu','pdf','path2'),('3','wer','wert','weeeee','eeeee','word','path3'),('4','wer','wert','we','we','pdf','path4');
 /*!40000 ALTER TABLE `electronicbooks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +170,7 @@ CREATE TABLE `onlinereadmodule` (
 
 LOCK TABLES `onlinereadmodule` WRITE;
 /*!40000 ALTER TABLE `onlinereadmodule` DISABLE KEYS */;
-INSERT INTO `onlinereadmodule` VALUES ('1','word','reader_word'),('2','pdf','read_pdf');
+INSERT INTO `onlinereadmodule` VALUES ('1','word','word的在线阅读器'),('2','pdf','pdf的在线阅读器');
 /*!40000 ALTER TABLE `onlinereadmodule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +199,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1','hello','123','123456',12,30,300);
+INSERT INTO `user` VALUES ('1','hello','456','undergraduate',12,30,270);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,6 +228,7 @@ CREATE TABLE `userorder` (
 
 LOCK TABLES `userorder` WRITE;
 /*!40000 ALTER TABLE `userorder` DISABLE KEYS */;
+INSERT INTO `userorder` VALUES ('1','1','idbook1','2018-01-12','1000-01-01',-1,-1),('2','1','idbook2','2018-01-13','1000-01-01',-1,-1),('3','1','idbook3','2018-11-01','2019-01-24',25,1),('4','1','idbook4','2018-11-01','2018-11-02',0,1);
 /*!40000 ALTER TABLE `userorder` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -237,4 +241,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-23 17:27:23
+-- Dump completed on 2019-01-24 17:44:02

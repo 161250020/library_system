@@ -36,11 +36,12 @@ public class ElectronicBooksManageServiceImpl implements ElectronicBooksManageSe
     public List getElectronicBooksInfoByName(String name) {
         ArrayList<ElectronicBooks> arr=DaoFactory.getInstance().getElectronicBooksDAO().getAllElectronicBooks();
         ElectronicBooks ebook=new ElectronicBooks();
+        List retArr=new ArrayList();
         for(int i=0;i<arr.size();i++){
-            if(!arr.get(i).getName().equals(name)){
-                arr.remove(i);
+            if(arr.get(i).getName().equals(name)){
+                retArr.add(arr.get(i));
             }
         }
-        return arr;
+        return retArr;
     }
 }
