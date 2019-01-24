@@ -34,4 +34,10 @@ public interface BookManageService {
      * from tables：book
      * */
     public List getAllBooksInfo();
+
+    /**
+     * function：更新书籍的信息
+     * from tables：book
+     * */
+    public void updateBookInfo(Book book);
 }
