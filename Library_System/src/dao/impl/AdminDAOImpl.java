@@ -24,7 +24,7 @@ public class AdminDAOImpl implements AdminDAO {
         Connection conn = helper.getConnection();
         PreparedStatement stat = null;
         ResultSet rs = null;
-        Admin adminer = null;
+        Admin adminer = new Admin();
         try {
             stat = conn.prepareStatement("SELECT * FROM admin WHERE name=?");
             stat.setString(1, name);

@@ -75,39 +75,4 @@
         <url-pattern>/borrowHistory</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>check_bollowing</servlet-name>
-        <servlet-class>servlet.admin.check_bollowing</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>check_bollowing</servlet-name>
-        <url-pattern>/check_bollowing</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>check_bookInfo</servlet-name>
-        <servlet-class>servlet.admin.check_bookInfo</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>check_bookInfo</servlet-name>
-        <url-pattern>/check_bookInfo</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>check_user_changed</servlet-name>
-        <servlet-class>servlet.admin.check_user_changed</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>check_user_changed</servlet-name>
-        <url-pattern>/check_user_changed</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>check_user_data</servlet-name>
-        <servlet-class>servlet.admin.check_user_data</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>check_user_data</servlet-name>
-        <url-pattern>/check_user_data</url-pattern>
-    </servlet-mapping>
 </web-app>

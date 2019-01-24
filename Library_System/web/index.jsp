@@ -15,7 +15,6 @@
 <body>
 <div class="login-container">
   <h1>图书管理系统</h1>
-
   <div class="connect">
     <p>登录</p>
   </div>
@@ -29,7 +28,9 @@
     </div>
     <button type="submit" name="submit" value="login">登 陆</button>
   </form>
-
+  <a href="/admin_login">
+    <button type="button" class="register-tis">我是管理员</button>
+  </a>
 </div>
 </body>
 

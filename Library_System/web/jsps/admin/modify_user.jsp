@@ -1,15 +1,14 @@
-<%@ page import="model.User" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="model.User" %><%--
   Created by IntelliJ IDEA.
   User: lx
-  Date: 2019/1/22
-  Time: 14:58
+  Date: 2019/1/24
+  Time: 15:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>查看用户个人信息</title>
+    <title>修改个人信息</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,11 +38,11 @@
     </style>
 </head>
 <body>
-<div class="panel panel-info">
-    <%
-    List<User> userList = (List<User>) session.getAttribute("userInfoList");
+<%
     String username = (String) session.getAttribute("username");
+    User user = (User) session.getAttribute("user");
 %>
+<div class="panel panel-info">
     <!--标题-->
     <div class="panel-heading">
         <b class="panel-title">图书馆信息系统</b>
@@ -91,22 +90,75 @@
             <div class="col-md-9" style="background-color: white;box-shadow: inset 1px -1px 1px #f7ff62, inset -1px 1px 1px #fff626;height: 70%;">
                 <br>
                 <br>
+                <form method="post" action="/modify_user">
                 <div class="panel panel-default">
-                    <form action="/modify_user" method="get">
-                    <table class="table" id="project">
-                        <tr><th>用户ID</th><th>用户名</th><th>密码</th><th>类型</th><th>可借本数</th><th>可借天数</th><th>余额</th><th>操作</th></tr>
-                        <%
-                            for(int i=0;i<userList.size();i++){
-                                out.println("<tr>\n" +
-                                        "<td>"+userList.get(i).getId()+"</td><td>"+userList.get(i).getName()+"</td>" +
-                                        "<td>"+userList.get(i).getPassword()+"</td><td>"+userList.get(i).getType()+"</td>" +
-                                        "<td>"+userList.get(i).getMaxNum()+"</td><td>"+userList.get(i).getMaxPeriod()+"</td>" +
-                                        "<td>"+userList.get(i).getMoney()+"</td><td><button name='change' type='submit' value='"+userList.get(i).getName()+"'>修改</button></td>" +
-                                        "</tr>");
-                            }
-                        %>
-                    </table></form>
-                </div>
+
+                        <div style="height: 40px">
+                            <div class="one">
+                                <h5 style="font-family: 仿宋;font-weight: bold">用户ID：</h5>
+                            </div>
+                            <div class="two">
+                                <input type="text" class="form-control" name="user_id" readonly="readonly" value="<%=user.getId()%>">
+                            </div>
+                        </div>
+                        <div style="height: 40px">
+                            <div class="one">
+                                <h5 style="font-family: 仿宋;font-weight: bold">用户名：</h5>
+                            </div>
+                            <div class="two">
+                                <input type="text" class="form-control" name="user_name" value="<%=user.getName()%>">
+                            </div>
+                        </div>
+                        <div style="height: 40px">
+                            <div class="one">
+                                <h5 style="font-family: 仿宋;font-weight: bold">类型：</h5>
+                            </div>
+                            <div class="two">
+                                <input type="text" class="form-control" name="user_type" value="<%=user.getType()%>">
+                            </div>
+                            <div style="height: 40px">
+                                <div class="one">
+                                    <h5 style="font-family: 仿宋;font-weight: bold">密码：</h5>
+                                </div>
+                                <div class="two">
+                                    <input type="text" class="form-control" name="user_password" value="<%=user.getPassword()%>">
+                                </div>
+                            </div>
+                            <div style="height: 40px">
+                                <div class="one">
+                                    <h5 style="font-family: 仿宋;font-weight: bold">可借本数：</h5>
+                                </div>
+                                <div class="two">
+                                    <input type="text" class="form-control" name="user_MaxNum" value="<%=user.getMaxNum()%>">
+                                </div>
+                            </div>
+                            <div style="height: 40px">
+                                <div class="one">
+                                    <h5 style="font-family: 仿宋;font-weight: bold">可借天数：</h5>
+                                </div>
+                                <div class="two">
+                                    <input type="text" class="form-control" name="user_MaxPeriod" value="<%=user.getMaxPeriod()%>">
+                                </div>
+                            </div>
+
+                            <div style="height: 40px">
+                                <div class="one">
+                                    <h5 style="font-family: 仿宋;font-weight: bold">余额：</h5>
+                                </div>
+                                <div class="two">
+                                    <input type="text" class="form-control" name="user_money" value="<%=user.getMoney()%>">
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <br>
+
+                        <div align="center">
+                            <button type="submit" class="button warning tiny" style="width: 50%">确认</button>
+                        </div>
+
+                </div></form>
             </div>
         </div>
     </div>
