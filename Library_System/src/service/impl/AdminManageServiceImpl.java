@@ -39,4 +39,16 @@ public class AdminManageServiceImpl implements AdminManageService {
         List ret=DaoFactory.getInstance().getUserDAO().findAllUser();
         return ret;
     }
+
+    @Override
+    public List getAllUserorder() {
+        List allUserOrders=DaoFactory.getInstance().getUserOrderDAO().getAllUserOrder();
+        return allUserOrders;
+    }
+
+    @Override
+    public List getAllEdituserinfoorder() {
+        List allEdituserinfoorder=DaoFactory.getInstance().getEditUserInfoOrderDAO().getAllEditUserInfoOrder();
+        return allEdituserinfoorder;
+    }
 }

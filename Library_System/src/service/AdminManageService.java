@@ -27,4 +27,16 @@ public interface AdminManageService {
      * from tables：user
      * */
     public List getAllUsersInfo();
+
+    /**
+     * function：获取所有借阅信息
+     * from tables：userorder
+     * */
+    public List getAllUserorder();
+
+    /**
+     * function：获取所有用户信息改变记录
+     * from tables：edituserinfoorder
+     * */
+    public List getAllEdituserinfoorder();
 }
