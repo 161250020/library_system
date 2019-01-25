@@ -12,7 +12,11 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
-
+/**
+ * author：丁雯雯
+ * time：2019/01/24
+ * 管理员的基本信息
+ */
 @WebServlet(name = "borrowBooks")
 public class borrowBooks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

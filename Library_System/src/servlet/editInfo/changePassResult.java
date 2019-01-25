@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/**
+ * author：丁雯雯
+ * time：2019/01/24
+ * 管理员的基本信息
+ */
 @WebServlet("/changePassResult")
 public class changePassResult extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

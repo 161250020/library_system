@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lx
+  User: 丁雯雯
   Date: 2019/1/21
   Time: 15:52
   To change this template use File | Settings | File Templates.
@@ -29,7 +29,6 @@
     </div>
     <button type="submit" name="submit" value="login">登 陆</button>
   </form>
-
 </div>
 </body>
 

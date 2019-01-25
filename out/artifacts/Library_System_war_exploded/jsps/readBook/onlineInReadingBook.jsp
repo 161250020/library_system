@@ -2,7 +2,9 @@
 <%@ page import="otherModels.strategies.readEBooks.Context" %>
 <%@ page import="otherModels.strategies.readEBooks.pdfStrategy" %>
 <%@ page import="otherModels.strategies.readEBooks.wordStrategy" %>
-<%@ page import="model.OnlineReadModule" %><%--
+<%@ page import="model.OnlineReadModule" %>
+<%@ page import="java.util.UUID" %>
+<%@ page import="changeFileToPDF.Word2Pdf" %><%--
   Created by IntelliJ IDEA.
   User: 丁雯雯
   Date: 2019/1/22
@@ -62,7 +64,7 @@
 
     ElectronicBooks ebookInfo=new ElectronicBooks();
     ebookInfo= (ElectronicBooks) session.getAttribute("ebookInfo");
-    String path=ebookInfo.getFilepath();
+    String path= (String) session.getAttribute("filePath");
     session.setAttribute("ebookInfo",new ElectronicBooks());//获取完电子书的信息就清除
 
     //通过strategy获得文档阅读器的onlineReadModule
@@ -141,11 +143,20 @@
                     <b>内容如下：</b>
                     <!--在线阅读的内容显示如下-->
                     <div style="height: 500px;background-color: white">
-                        此电子书的路径（可以通过这个获得在线电子书阅读所需要加载的内容）：<%=path%>
-                        <br>
-                        此电子书的在线阅读器类型（可以通过这个使用不同的在线阅读器加载电子书的内容）：<%=onlineReaderType%>
-                        <br>
-                        在线多种类型文档阅读......
+                        <%
+                            //如果为pdf类型的文档
+                            if(onlineReaderType.equals("pdf的在线阅读器")){
+                                out.println("<iframe src=\""+request.getContextPath() + path+"\" width=\"100%\" height=\"500\" scrolling=\"yes\"></iframe>");
+                            }
+                            else if(onlineReaderType.equals("word的在线阅读器")){
+                                //将Word文件转化成PDF文件，然后再显示出来
+                                System.out.println("jsps:"+path);
+                                out.println("<iframe src=\""+request.getContextPath() + path+"\" width=\"100%\" height=\"500\" scrolling=\"yes\"></iframe>");
+                            }
+                            else{
+                                out.println("<b>此书文件类型非PDF且非Word，无法在线阅读！</b>");
+                            }
+                        %>
                     </div>
                 </div>
             </div>

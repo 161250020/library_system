@@ -4,7 +4,11 @@ import service.*;
 import service.impl.*;
 import service.ElectronicBooksManageService;
 import service.OnlineReadModuleManageService;
-
+/**
+ * author：丁雯雯
+ * time：2019/01/24
+ * 管理员的基本信息
+ */
 public class ServiceFactory {
     public static AdminManageService getAdminManageService(){
         return AdminManageServiceImpl.getInstance();

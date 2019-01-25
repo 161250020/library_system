@@ -11,7 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.ArrayList;
-
+/**
+ * author：丁雯雯
+ * time：2019/01/24
+ * 管理员的基本信息
+ */
 @WebServlet(name = "userInfo")
 public class userInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

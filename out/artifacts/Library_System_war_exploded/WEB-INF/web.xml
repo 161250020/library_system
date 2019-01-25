@@ -110,4 +110,5 @@
         <servlet-name>check_user_data</servlet-name>
         <url-pattern>/check_user_data</url-pattern>
     </servlet-mapping>
+
 </web-app>

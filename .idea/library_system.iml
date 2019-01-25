@@ -17,5 +17,24 @@
         <jarDirectory url="file://$MODULE_DIR$/Library_System/web/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../将word或Excel转换成PDF文件的jar包/aspose-words-14.7.0-jdk16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../将word或Excel转换成PDF文件的jar包/aspose-cells-8.5.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="jar://$MODULE_DIR$/../将word或Excel转换成PDF文件的jar包/aspose-cells-8.5.2.jar!/" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
