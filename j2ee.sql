@@ -120,7 +120,7 @@ CREATE TABLE `electronicbooks` (
 
 LOCK TABLES `electronicbooks` WRITE;
 /*!40000 ALTER TABLE `electronicbooks` DISABLE KEYS */;
-INSERT INTO `electronicbooks` VALUES ('1','we','wer','wert','werty','word','path1'),('2','we2','wer2','wert2','wertyuu','pdf','path2'),('3','wer','wert','weeeee','eeeee','word','path3'),('4','wer','wert','we','we','pdf','path4');
+INSERT INTO `electronicbooks` VALUES ('1','复习资料','linux系统基础重点','学长/学姐','南京大学软件学院','word','/jsps/readBook/ebooks/linux系统基础重点.docx'),('2','课表','软件学院本科生2018-2019-2课表','教务处','南京大学','pdf','/jsps/readBook/ebooks/软件学院本科生2018-2019-2课表.pdf'),('3','答案 ','Linux系统基础实验一答案 ','丁雯雯 ','南京大学软件学院 ','word','/jsps/readBook/ebooks/Linux系统基础实验一答案.doc '),('4','课表','大三上课表','教务处','南京大学','pdf','/jsps/readBook/ebooks/大三上课表.pdf');
 /*!40000 ALTER TABLE `electronicbooks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,4 +241,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-24 17:44:02
+-- Dump completed on 2019-01-25 21:32:13

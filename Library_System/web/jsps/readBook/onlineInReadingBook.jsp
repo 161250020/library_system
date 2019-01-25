@@ -152,6 +152,13 @@
                                 //将Word文件转化成PDF文件，然后再显示出来
                                 System.out.println("jsps:"+path);
                                 out.println("<iframe src=\""+request.getContextPath() + path+"\" width=\"100%\" height=\"500\" scrolling=\"yes\"></iframe>");
+
+                                //如果上面的那个实现不了，就使用下面的这个
+                                out.println("此电子书的路径（可以通过这个获得在线电子书阅读所需要加载的内容）："+path+"\n" +
+                                " <br>\n" +
+                                " 此电子书的在线阅读器类型（可以通过这个使用不同的在线阅读器加载电子书的内容）："+onlineReaderType+"\n" +
+                                " <br>\n" +
+                                " 在线多种类型文档阅读......");
                             }
                             else{
                                 out.println("<b>此书文件类型非PDF且非Word，无法在线阅读！</b>");
