@@ -6,7 +6,11 @@ import com.aspose.words.SaveFormat;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-
+/**
+ * author：丁雯雯
+ * time：2019/01/25
+ * 管理员的基本信息
+ */
 public class change2 {
     public static boolean getLicense() {
 
