@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 修改用户基本信息的servlet
  */
 @WebServlet(name = "editUserInfo")
 public class editUserInfo extends HttpServlet {

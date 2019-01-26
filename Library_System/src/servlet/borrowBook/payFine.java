@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 缴纳罚款的servlet
  */
 @WebServlet("/payFine")
 public class payFine extends HttpServlet {

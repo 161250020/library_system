@@ -151,7 +151,6 @@
                             else if(onlineReaderType.equals("word的在线阅读器")){
                                 //将Word文件转化成PDF文件，然后再显示出来
                                 System.out.println("jsps:"+path);
-                                out.println("<iframe src=\""+request.getContextPath() + path+"\" width=\"100%\" height=\"500\" scrolling=\"yes\"></iframe>");
 
                                 //如果上面的那个实现不了，就使用下面的这个
                                 out.println("此电子书的路径（可以通过这个获得在线电子书阅读所需要加载的内容）："+path+"\n" +

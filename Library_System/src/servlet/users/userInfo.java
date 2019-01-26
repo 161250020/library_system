@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 用户基本信息的servlet
  */
 @WebServlet(name = "userInfo")
 public class userInfo extends HttpServlet {

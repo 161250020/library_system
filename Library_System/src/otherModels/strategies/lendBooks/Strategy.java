@@ -2,7 +2,7 @@ package otherModels.strategies.lendBooks;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 借书信息的strategy
  */
 public interface Strategy {
     //用户借书权限---借书最大数目

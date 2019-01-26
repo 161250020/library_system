@@ -9,7 +9,7 @@ import java.io.InputStream;
 /**
  * author：丁雯雯
  * time：2019/01/25
- * 管理员的基本信息
+ * 测试Word转PDF的类
  */
 public class change2 {
     public static boolean getLicense() {

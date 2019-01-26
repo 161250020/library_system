@@ -2,7 +2,7 @@ package otherModels.strategies.lendBooks;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 本科生的strategy
  */
 public class undergraduateStrategy implements Strategy {
 

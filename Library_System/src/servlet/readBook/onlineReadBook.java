@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 在线电子书搜索结果的servlet
  */
 @WebServlet(name = "onlineReadBook")
 public class onlineReadBook extends HttpServlet {

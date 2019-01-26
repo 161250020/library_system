@@ -7,7 +7,7 @@ import service.OnlineReadModuleManageService;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * service层的factory
  */
 public class ServiceFactory {
     public static AdminManageService getAdminManageService(){

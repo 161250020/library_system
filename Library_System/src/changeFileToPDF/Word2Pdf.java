@@ -9,7 +9,7 @@ import java.io.InputStream;
 /**
  * author：丁雯雯
  * time：2019/01/25
- * 管理员的基本信息
+ * 进行Word转PDF
  */
 public class Word2Pdf {
     public static boolean getLicense() {

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.EditUserInfoOrder" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: lx
   Date: 2019/1/22
@@ -38,14 +39,20 @@
     </style>
 </head>
 <body>
+<%
+    String username = (String) session.getAttribute("username");
+    List<EditUserInfoOrder> list = (List<EditUserInfoOrder>) session.getAttribute("editInfo");
+%>
 <div class="panel panel-info">
     <!--标题-->
     <div class="panel-heading">
         <b class="panel-title">图书馆信息系统</b>
         <!--左边-->
         <div align="right">
-            <b id="b_userId" style="alignment: right">管理员：</b>
-            <button type="button" class="btn btn-default" style="alignment: right" onclick="">退出登录</button>
+            <b id="b_userId" style="alignment: right">管理员：<%=username%></b>
+            <form method='GET' action="/admin_login">
+                <input class="btn btn-default" style="alignment: right" type='submit' name='Logout' value='Logout'>
+            </form>
         </div>
     </div>
 
@@ -66,16 +73,16 @@
                     </li>
                     <br>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#">用户信息</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_user_data'"><a href="/check_user_data">用户信息</a></button>
                     </li>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#">借阅记录</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_bollowing'"><a href="/check_bollowing">借阅记录</a></button>
                     </li>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#">书籍信息</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_bookInfo'"><a href="/check_bookInfo" >书籍信息</a></button>
                     </li>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" style="color: #FF0543">用户信息修改记录</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_user_changed'"><a href="/check_user_changed"  style="color: #FF0543">用户信息修改记录</a></button>
                     </li>
                 </ul>
             </div>
@@ -86,7 +93,16 @@
                 <br>
                 <div class="panel panel-default">
                     <table class="table" id="project">
-                        <tr><th>用户ID</th><th>用户名</th><th>修改时间</th><th>修改前密码</th><th>修改后密码</th></tr>
+                        <tr><th>修改记录ID</th><th>用户ID</th><th>修改时间</th><th>修改前密码</th><th>修改后密码</th></tr>
+                        <%
+                            for(int i=0;i<list.size();i++){
+                                out.println("<tr>\n" +
+                                        "<td>"+list.get(i).getId()+"</td>"+
+                                        "<td>"+list.get(i).getUserId()+"</td><td>"+list.get(i).getChangeTime()+"</td>" +
+                                        "<td>"+list.get(i).getPrePass()+"</td><td>"+list.get(i).getLaterPass()+"</td>" +
+                                        "</tr>");
+                            }
+                        %>
                     </table>
                 </div>
             </div>

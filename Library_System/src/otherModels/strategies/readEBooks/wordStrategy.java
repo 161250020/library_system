@@ -5,7 +5,7 @@ import model.OnlineReadModule;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 阅读Word电子书选择Word组件
  */
 public class wordStrategy implements Strategy {
     @Override

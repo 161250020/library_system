@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 修改密码的结果的servlet
  */
 @WebServlet("/changePassResult")
 public class changePassResult extends HttpServlet {

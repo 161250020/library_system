@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 在线阅读电子书的servlet
  */
 @WebServlet(name = "onlineInReadingBook")
 public class onlineInReadingBook extends HttpServlet {
@@ -36,6 +36,7 @@ public class onlineInReadingBook extends HttpServlet {
                 session.setAttribute("filePath", ebookInfo.getFilepath());
             }
             else{
+                /*
                 String uuid= UUID.randomUUID().toString();//转化成的PDF的名称
                 String Address="Library_System/web"+ebookInfo.getFilepath();
                 System.out.println(Address);
@@ -43,6 +44,13 @@ public class onlineInReadingBook extends HttpServlet {
                 String path=ebookInfo.getFilepath().substring(0, 22)+uuid+".pdf";
                 System.out.println(path);
                 session.setAttribute("filePath",path);//传递新建的PDF文件的路径
+                */
+                String newpath2=Word2Pdf.class.getResource("/").getFile();//获得的地址当中的" "为"%20"
+                String[] pathSplits=newpath2.split("out/artifacts");
+                String newFilePath=pathSplits[0]+"Library_System/web"+ebookInfo.getFilepath();
+                newFilePath=newFilePath.substring(1);
+                newFilePath=newFilePath.replace("%20"," ");
+                session.setAttribute("filePath", newFilePath);
             }
             context.getRequestDispatcher("/jsps/readBook/onlineInReadingBook.jsp").forward(request, response);
         }

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="model.Book" %><%--
   Created by IntelliJ IDEA.
   User: lx
   Date: 2019/1/22
@@ -38,14 +39,20 @@
     </style>
 </head>
 <body>
+<%
+    List<Book> bookList = (List<Book>) session.getAttribute("bookInfoList");
+    String username = (String) session.getAttribute("username");
+%>
 <div class="panel panel-info">
     <!--标题-->
     <div class="panel-heading">
         <b class="panel-title">图书馆信息系统</b>
         <!--左边-->
         <div align="right">
-            <b id="b_userId" style="alignment: right">管理员：</b>
-            <button type="button" class="btn btn-default" style="alignment: right" onclick="">退出登录</button>
+            <b id="b_userId" style="alignment: right">管理员：<%=username%></b>
+            <form method='GET' action="/admin_login">
+                <input class="btn btn-default" style="alignment: right" type='submit' name='Logout' value='Logout'>
+            </form>
         </div>
     </div>
 
@@ -66,16 +73,16 @@
                     </li>
                     <br>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#">用户信息</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_user_data'"><a href="/check_user_data">用户信息</a></button>
                     </li>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#">借阅记录</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_bollowing'"><a href="/check_bollowing">借阅记录</a></button>
                     </li>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#" style="color: #FF0543">书籍信息</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_bookInfo'"><a href="/check_bookInfo" style="color: #FF0543">书籍信息</a></button>
                     </li>
                     <li>
-                        <button type="button" class="button secondary" style="width: 100%"><a href="#">用户信息修改记录</a></button>
+                        <button type="button" class="button secondary" style="width: 100%" onclick="javascript:location.href='/check_user_changed'"><a href="/check_user_changed">用户信息修改记录</a></button>
                     </li>
                 </ul>
             </div>
@@ -85,11 +92,23 @@
                 <br>
                 <br>
                 <div class="panel panel-default">
+                    <form method="get" action="/modify_book">
                     <table class="table" id="project">
-                        <tr><th>书籍ID</th><th>名称</th><th>类型</th><th>作者</th><th>出版社</th><th>状态</th><th>操作</th></tr>
-                    </table>
+                        <tr><th>书籍ID</th><th>名称</th><th>类型</th><th>作者</th><th>出版社</th><th>逾期每日罚款</th><th>状态</th><th>操作</th></tr>
+
+                        <%
+                            for(int i=0;i<bookList.size();i++){
+                                out.println("<tr>\n" +
+                                        "<td>"+bookList.get(i).getId()+"</td><td>"+bookList.get(i).getName()+"</td>" +
+                                        "<td>"+bookList.get(i).getType()+"</td><td>"+bookList.get(i).getAuthor()+"</td>" +
+                                        "<td>"+bookList.get(i).getPublishCompany()+"</td><td>" +bookList.get(i).getFineMoneyPerDay()+"</td><td>"+bookList.get(i).getState()+
+                                        "</td><td><button name='change' type='submit' value='"+bookList.get(i).getId()+"'>修改</button></td>" +
+                                        "</tr>");
+                            }
+                        %>
+                    </table></form>
                 </div>
-                <button>添加书籍入库</button>
+                <a href="/add_book"><button >添加书籍入库</button></a>
             </div>
         </div>
     </div>

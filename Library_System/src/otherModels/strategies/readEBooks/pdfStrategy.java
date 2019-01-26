@@ -5,7 +5,7 @@ import model.OnlineReadModule;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 阅读PDF电子书选择PDF组件
  */
 public class pdfStrategy implements Strategy {
     @Override

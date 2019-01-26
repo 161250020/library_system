@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 进入登陆界面的servlet
  */
 @WebServlet("/toLoginJSP")
 public class toLoginJSP extends HttpServlet {

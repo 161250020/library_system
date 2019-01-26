@@ -2,7 +2,7 @@ package otherModels.strategies.lendBooks;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 借书信息的context
  */
 public class Context {
     private Strategy strategy;

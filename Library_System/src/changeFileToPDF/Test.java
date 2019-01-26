@@ -2,7 +2,7 @@ package changeFileToPDF;
 /**
  * author：丁雯雯
  * time：2019/01/25
- * 管理员的基本信息
+ * 测试Word转PDF的开始类
  */
 public class Test {
     public static void main(String[] args){

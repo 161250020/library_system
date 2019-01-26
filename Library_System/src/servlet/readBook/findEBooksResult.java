@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * author：丁雯雯
  * time：2019/01/24
- * 管理员的基本信息
+ * 寻找电子书信息的servlet
  */
 @WebServlet("/findEBooksResult")
 public class findEBooksResult extends HttpServlet {
